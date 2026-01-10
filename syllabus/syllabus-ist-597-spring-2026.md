@@ -3,6 +3,7 @@ title: IST 597 (001) — Spring 2026
 subtitle: Human Centered Artificial Intelligence (HCAI)
 date-meta: 2026
 author-meta: Saeed Abdullah
+lang: en-US
 toc-title: Course Overview
 css: ../common/tufte.css
 section-divs: true
