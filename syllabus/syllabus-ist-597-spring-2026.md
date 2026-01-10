@@ -73,7 +73,7 @@ The cutoff point for each grade is the lower number without rounding
 ## Course Requirements
 
 ### Class Activity (30%)
-We will conduct interactive discussion sessions based on the theme and assigned readings on a given week[^acknowledgement]. Each student will lead the discussion at least twice during the semester. Sign up for at least two classes as a discussion leader in [this spreadsheet](#).
+We will conduct interactive discussion sessions[^acknowledgement] based on the theme and assigned readings on a given week. Each student will lead two discussion sessions during the semester. **Sign up for two classes as a discussion leader in [this spreadsheet](#)**.
 
 #### Readers
 Readers will create one slide for each of the assigned readings:
@@ -94,9 +94,10 @@ Readers will create one slide for each of the assigned readings:
 #### Discussion Leaders
 The discussion leaders will synthesize responses from readers and their own thoughts from all assigned readings into an exploratory exercise for the class:
 
-* Each exercise should take 30–40 minutes and then another 30–40 minutes of reflection and discussion
+
 * The exercise should **not** just be a lecture
-	* You should summarize the responses from the readers (< 5 minutes)
+	* Though, you should summarize responses from the readers (< 5 minutes)
+* Each exercise should take 30–40 minutes and then another 30–40 minutes of reflection and discussion
 * For designing interactive exercise, please use the following resources:
 	* [Stanford TeachingWriting Activities](https://teachingwriting.stanford.edu/classroom-activities/all-activities). E.g.,
 		* [Mining reading](https://teachingwriting.stanford.edu/mining-reading)
@@ -472,5 +473,5 @@ change. Instructor will notify students of any major changes and
 students will be responsible for abiding by them. Even if you print this
 syllabus, please check the online version often.
 
-[^acknowledgement]: I have adapted in-class activity structures and strategies from Dr. [Dana Calacci](https://www.dcalacci.net/). Thanks, Dana!
+[^acknowledgement]: I have adapted class activity structures and strategies from Dr. [Dana Calacci](https://www.dcalacci.net/). Thanks, Dana!
 
