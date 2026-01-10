@@ -4,7 +4,7 @@ subtitle: Human Centered Artificial Intelligence (HCAI)
 date-meta: 2026
 author-meta: Saeed Abdullah
 toc-title: Course Overview
-css: common/tufte.css
+css: ../common/tufte.css
 section-divs: true
 include-before: |
     <article>
