@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Saeed Abdullah" />
+  <meta name="dcterms.date" content="2026" />
+  <title>IST 597 (001) — Spring 2026</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../common/tufte.css" />
+</head>
+<body>
+<article>
+<header id="title-block-header">
+<h1 class="title">IST 597 (001) — Spring 2026</h1>
+<p class="subtitle">Human Centered Artificial Intelligence (HCAI)</p>
+</header>
+<section>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Course Overview</h2>
+<ul>
+<li><a href="#course-info" id="toc-course-info">Course Info</a></li>
+<li><a href="#description" id="toc-description">Description</a></li>
+<li><a href="#learning-objectives" id="toc-learning-objectives">Learning
+Objectives</a></li>
+<li><a href="#course-grading" id="toc-course-grading">Course Grading</a>
+<ul>
+<li><a href="#final-grade-policy" id="toc-final-grade-policy">Final
+Grade Policy</a></li>
+</ul></li>
+<li><a href="#course-requirements" id="toc-course-requirements">Course
+Requirements</a>
+<ul>
+<li><a href="#class-activity-30" id="toc-class-activity-30">Class
+Activity (30%)</a>
+<ul>
+<li><a href="#readers" id="toc-readers">Readers</a></li>
+<li><a href="#discussion-leaders" id="toc-discussion-leaders">Discussion
+Leaders</a></li>
+</ul></li>
+<li><a href="#assignment-20" id="toc-assignment-20">Assignment
+(20%)</a></li>
+<li><a href="#final-project-50" id="toc-final-project-50">Final Project
+(50%)</a>
+<ul>
+<li><a href="#project-proposal-5" id="toc-project-proposal-5">Project
+Proposal (5%)</a></li>
+<li><a href="#proposal-presentation-10"
+id="toc-proposal-presentation-10">Proposal Presentation (10%)</a></li>
+<li><a href="#progress-report-5" id="toc-progress-report-5">Progress
+Report (5%)</a></li>
+<li><a href="#final-presentation-10"
+id="toc-final-presentation-10">Final Presentation (10%)</a></li>
+<li><a href="#final-code-paper-submission-20"
+id="toc-final-code-paper-submission-20">Final Code + Paper Submission
+(20%)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#weekly-schedule" id="toc-weekly-schedule">Weekly
+Schedule</a>
+<ul>
+<li><a href="#week-1-0116-introduction"
+id="toc-week-1-0116-introduction">Week 1 (01/16) — Introduction</a></li>
+<li><a href="#week-2-0123-living-in-the-future"
+id="toc-week-2-0123-living-in-the-future">Week 2 (01/23) — Living in the
+future</a></li>
+<li><a href="#week-3-0130-when-is-ai-useful"
+id="toc-week-3-0130-when-is-ai-useful">Week 3 (01/30) — When is AI
+useful?</a></li>
+<li><a href="#week-4-0206-ai-does-your-research"
+id="toc-week-4-0206-ai-does-your-research">Week 4 (02/06) — AI does your
+research</a></li>
+<li><a href="#week-5-0213-decision-making-with-ai"
+id="toc-week-5-0213-decision-making-with-ai">Week 5 (02/13) —
+Decision-making with AI</a></li>
+<li><a href="#week-6-0220-final-project-brainstorm"
+id="toc-week-6-0220-final-project-brainstorm">Week 6 (02/20) — Final
+project brainstorm</a></li>
+<li><a href="#week-7-0227-conversing-with-ai"
+id="toc-week-7-0227-conversing-with-ai">Week 7 (02/27) — Conversing with
+AI</a></li>
+<li><a href="#week-8-0306-ai-for-health"
+id="toc-week-8-0306-ai-for-health">Week 8 (03/06) — AI for
+health</a></li>
+<li><a href="#week-9-0313-no-class-spring-break"
+id="toc-week-9-0313-no-class-spring-break">Week 9 (03/13) — No Class
+(Spring break)</a></li>
+<li><a href="#week-10-0320-final-project-proposal"
+id="toc-week-10-0320-final-project-proposal">Week 10 (03/20) — Final
+project proposal</a></li>
+<li><a href="#week-11-0327-evaluation"
+id="toc-week-11-0327-evaluation">Week 11 (03/27) —  Evaluation</a></li>
+<li><a href="#week-12-0403-human-agent-interaction"
+id="toc-week-12-0403-human-agent-interaction">Week 12 (04/03)
+— Human-Agent Interaction</a></li>
+<li><a href="#week-13-0410-getting-out-of-the-ai-echo-chamber"
+id="toc-week-13-0410-getting-out-of-the-ai-echo-chamber">Week 13 (04/10)
+— Getting out of the AI echo chamber</a></li>
+<li><a href="#week-14-0417-ai-responsibility"
+id="toc-week-14-0417-ai-responsibility">Week 14 (04/17) — AI
+responsibility</a></li>
+<li><a href="#week-15-0424-risk-mitigation"
+id="toc-week-15-0424-risk-mitigation">Week 15 (04/24) — Risk
+mitigation</a></li>
+<li><a href="#week-16-0501-final-presentation"
+id="toc-week-16-0501-final-presentation">Week 16 (05/01) — Final
+presentation</a></li>
+</ul></li>
+<li><a href="#course-policy" id="toc-course-policy">Course Policy</a>
+<ul>
+<li><a href="#writing-and-speaking"
+id="toc-writing-and-speaking">Writing and Speaking</a></li>
+<li><a href="#bring-your-own-device-byod-policy"
+id="toc-bring-your-own-device-byod-policy">Bring Your Own Device (BYOD)
+Policy</a></li>
+<li><a href="#programming" id="toc-programming">Programming</a></li>
+<li><a href="#attendance" id="toc-attendance">Attendance</a></li>
+<li><a href="#late-submissions" id="toc-late-submissions">Late
+submissions</a></li>
+<li><a href="#grade-disputes" id="toc-grade-disputes">Grade
+Disputes</a></li>
+<li><a href="#academic-integrity" id="toc-academic-integrity">Academic
+Integrity</a></li>
+<li><a href="#disability-accommodation"
+id="toc-disability-accommodation">Disability Accommodation</a></li>
+<li><a href="#counseling-and-psychological-services"
+id="toc-counseling-and-psychological-services">Counseling and
+psychological services</a></li>
+<li><a href="#educational-equityreport-bias"
+id="toc-educational-equityreport-bias">Educational Equity/Report
+Bias</a></li>
+<li><a href="#preferred-name-preferred-gender-pronouns"
+id="toc-preferred-name-preferred-gender-pronouns">Preferred Name &amp;
+Preferred Gender Pronouns</a></li>
+<li><a href="#student-class-recording"
+id="toc-student-class-recording">Student Class Recording</a></li>
+<li><a href="#copyright-statement"
+id="toc-copyright-statement">Copyright Statement</a></li>
+<li><a href="#emergency-notifications"
+id="toc-emergency-notifications">Emergency Notifications</a></li>
+<li><a href="#communication-expectation"
+id="toc-communication-expectation">Communication Expectation</a>
+<ul>
+<li><a href="#questions-and-other-communications-with-instructor"
+id="toc-questions-and-other-communications-with-instructor">Questions
+and Other Communications with Instructor</a></li>
+<li><a href="#group-work" id="toc-group-work">Group work</a></li>
+<li><a href="#logging-into-canvas" id="toc-logging-into-canvas">Logging
+into Canvas</a></li>
+<li><a href="#emailing-through-canvas"
+id="toc-emailing-through-canvas">Emailing through Canvas</a></li>
+</ul></li>
+<li><a href="#use-of-generative-ai-tools"
+id="toc-use-of-generative-ai-tools">Use of Generative AI tools</a></li>
+<li><a href="#right-to-make-changes-to-the-syllabus"
+id="toc-right-to-make-changes-to-the-syllabus">Right to Make Changes to
+the Syllabus</a></li>
+</ul></li>
+</ul>
+</nav>
+</section>
+<section id="course-info" class="level2">
+<h2>Course Info</h2>
+<ul>
+<li><strong>Location</strong>: Westgate E202</li>
+<li><strong>Canvas</strong>: <a
+href="https://psu.instructure.com/courses/2443462"
+class="uri">https://psu.instructure.com/courses/2443462</a></li>
+<li><strong>Class time</strong>: Fr 1:00PM - 4:00PM</li>
+<li><strong>Instructor</strong>: <a
+href="https://saeedabdullah.com/">Saeed Abdullah</a>
+<ul>
+<li><strong>Email</strong>: <a
+href="mailto:saeed@psu.edu">saeed@psu.edu</a></li>
+</ul></li>
+<li><strong>Teaching Assistant</strong>: <a
+href="https://xuyk021.github.io/">Yunkai Xu</a>
+<ul>
+<li><strong>Email</strong>: <a
+href="mailto:yqx5322@psu.edu">yqx5322@psu.edu</a></li>
+</ul></li>
+<li><strong>Office Hours</strong>
+<ul>
+<li>Schedule a meeting using the <a
+href="https://outlook.office365.com/book/IST597HCAIOfficeHours@PennStateOffice365.onmicrosoft.com/">booking
+page</a></li>
+<li>Saeed Abdullah: Tuesday 3:00–4:00pm</li>
+<li>Yunkai Xu: Thursday 2:00–3:30pm</li>
+</ul></li>
+</ul>
+</section>
+<section id="description" class="level2">
+<h2>Description</h2>
+<p>This course will explore design principles and implementation
+strategies for Human Centered Artificial Intelligence (HCAI). It will
+focus on understanding requirements and guidelines for AI applications
+to support human values, ethics, and positive user experiences. The
+course will also explore the challenges and opportunities of using
+generative AI in different application contexts. By the end of the
+course, students should be able to conduct need assessments for
+designing AI applications, prototyping human-AI interactions, and
+human-centered assessment of AI applications. The course will follow a
+learning-by-doing approach with hands-on class activities and
+interactions.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Identifying societal challenges and opportunities of emerging AI
+applications</li>
+<li>Assessing requirements, approaches, and goals for human-centered
+AI</li>
+<li>Applying principles and methods for creating and evaluating
+human-centered AI systems</li>
+</ul>
+</section>
+<section id="course-grading" class="level2">
+<h2>Course Grading</h2>
+<ul>
+<li>Class activities — 30%</li>
+<li>Assignment — 20%
+<ul>
+<li>Assignment 1: 10 points</li>
+<li>Assignment 2: 10 points</li>
+</ul></li>
+<li>Final Project — 50%
+<ul>
+<li>Proposal submission: 5 points</li>
+<li>Proposal Presentation: 10 points</li>
+<li>Progress Report: 5 points</li>
+<li>Final presentation: 10 points</li>
+<li>Final submission: 20 points</li>
+</ul></li>
+</ul>
+<section id="final-grade-policy" class="level3">
+<h3>Final Grade Policy</h3>
+<ul>
+<li>A: 100–93%</li>
+<li>A-: 92–90%</li>
+<li>B+: 89–87%</li>
+<li>B: 86–83%</li>
+<li>B-: 82–80%</li>
+<li>C+: 79–77%</li>
+<li>C: 76–70%</li>
+<li>D: 69–60%</li>
+<li>F: &lt;60%</li>
+</ul>
+<p>The cutoff point for each grade is the lower number without rounding
+(e.g., 89.9% will result in B+).</p>
+</section>
+</section>
+<section id="course-requirements" class="level2">
+<h2>Course Requirements</h2>
+<section id="class-activity-30" class="level3">
+<h3>Class Activity (30%)</h3>
+<p>We will conduct interactive discussion sessions based on the theme
+and assigned readings on a given week<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each student will lead
+the discussion at least twice during the semester. Sign up for at least
+two classes as a discussion leader in <a href="#">this
+spreadsheet</a>.</p>
+<section id="readers" class="level4">
+<h4>Readers</h4>
+<p>Readers will create one slide for each of the assigned readings:</p>
+<ul>
+<li>Add your response to the corresponding slide deck in <a
+href="">Google Drive</a>
+<ul>
+<li>There is <a href="">one folder for each class</a>.</li>
+<li>Each of these folders have one slide deck for each assigned readings
+<ul>
+<li>For example, <a href="#week-3-0130-when-is-ai-useful">Week 3</a> has
+two decks: <a href="">one for Vaccaro et al.</a> and <a href="">another
+for Lee et al.</a></li>
+</ul></li>
+<li>Create one slide per article</li>
+</ul></li>
+<li>Respond in 1-2 sentences to the following categories
+<ul>
+<li>Contributions — What are the main contributions here?</li>
+<li>Insights — What did you learn or find compelling?</li>
+<li>Surprised — What challenged your expectations?</li>
+<li>Test of Time — Will this still be true or relevant in 5 years?</li>
+<li>Connections — How does this link to other topics, readings, or the
+world?</li>
+</ul></li>
+<li>Add your slide <strong>24 hours before the class</strong>, so that
+discussion leaders can include them in their activity</li>
+</ul>
+</section>
+<section id="discussion-leaders" class="level4">
+<h4>Discussion Leaders</h4>
+<p>The discussion leaders will synthesize responses from readers and
+their own thoughts from all assigned readings into an exploratory
+exercise for the class:</p>
+<ul>
+<li>Each exercise should take 30–40 minutes and then another 30–40
+minutes of reflection and discussion</li>
+<li>The exercise should <strong>not</strong> just be a lecture
+<ul>
+<li>You should summarize the responses from the readers (&lt; 5
+minutes)</li>
+</ul></li>
+<li>For designing interactive exercise, please use the following
+resources:
+<ul>
+<li><a
+href="https://teachingwriting.stanford.edu/classroom-activities/all-activities">Stanford
+TeachingWriting Activities</a>. E.g.,
+<ul>
+<li><a href="https://teachingwriting.stanford.edu/mining-reading">Mining
+reading</a></li>
+<li><a
+href="https://teachingwriting.stanford.edu/channeling-doubter-and-believer">Doubter
+and Believer</a></li>
+</ul></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom">University
+of Waterloo In-Class Activities List</a>. E.g.,
+<ul>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Three%2Dstep%20interview">Three-step
+interview</a></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Fishbowl%20discussion">Fishbowl
+discussion</a></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Think%2DPair%2DShare">Think-Pair-Share</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="assignment-20" class="level3">
+<h3>Assignment (20%)</h3>
+<p>There will be two assignments throughout the course. See <a
+href="#course-info">Canvas</a> for deadlines.</p>
+</section>
+<section id="final-project-50" class="level3">
+<h3>Final Project (50%)</h3>
+<p>Each student will complete a final project. The main goal here is to
+learn to design, develop, and evaluate a HCAI system from scratch. As
+such, the project provides an excellent opportunity to put skills
+developed in the course into practice. In an ideal case, the project
+will become a part of a student’s research portfolio and resume for
+future internship and job opportunities. Your project paper could also
+be a first draft for a peer-review submission. We also highly encourage
+you to use this opportunity to participate in external events like <a
+href="https://nittanyai.psu.edu/alliance-programs/nittany-ai-challenge/">Nittany
+AI Challenge</a> and <a
+href="https://pennstateideamakers.weebly.com/">IdeaMakers
+Challenge</a>.</p>
+<p>There is considerable flexibility in terms of choosing a topic for
+the final project. You should consult with the staff as early as
+possible regarding a project topic.</p>
+<section id="project-proposal-5" class="level4">
+<h4>Project Proposal (5%)</h4>
+<p>The proposal should provide a clear outline of your plan and timeline
+for the project. It should be around 2 pages and include:</p>
+<ul>
+<li><p><em>What and why:</em> You should provide a concise description
+of the problem you are trying to address and identify why this is an
+important problem to address. Who will be your intended users?</p></li>
+<li><p><em>How:</em> The proposal should describe how you are going to
+approach the problem. You should try to justify why this approach makes
+sense, perhaps indicating some references you will be using to develop
+the project. You should also identify your plan for implementation. For
+example,</p>
+<ul>
+<li>What are the interactions and use cases you will aim to
+implement?</li>
+<li>What types of data will you use?</li>
+</ul></li>
+<li><p><em>Evaluation:</em> What are the criteria and metrics for
+success for your project? How are you planning to evaluate your
+system?</p></li>
+<li><p><em>Timeline:</em> You should also provide a detailed plan and
+timeline for your project. What are the major milestones in terms of
+implementation? When and how will you complete these
+milestones?</p></li>
+</ul>
+</section>
+<section id="proposal-presentation-10" class="level4">
+<h4>Proposal Presentation (10%)</h4>
+<p>Each student will present their project proposal to the class. You
+should plan a 5-minute presentation of your proposal with the goal of
+presenting enough concrete detail to get feedback and suggestions on
+issues that are important to you as you are carrying out the project.
+During the presentation, you should clearly convey what the project is,
+what you are trying to achieve, the current state of the art and your
+planned contribution (what is new in your project).</p>
+</section>
+<section id="progress-report-5" class="level4">
+<h4>Progress Report (5%)</h4>
+<p>The goal of the progress report is to get another set of reviews and
+feedback from the instructor. It will also help to identify whether you
+need to revisit the scope of the project and update the timeline
+accordingly. The report should include:</p>
+<ul>
+<li>A concise description of the research contributions and goals</li>
+<li>An introductory literature review</li>
+<li>Description of data plan
+<ul>
+<li>what types of data will be used for your project</li>
+<li>How are you going to get relevant datasets</li>
+</ul></li>
+<li>Description of technology development and computational method
+implementation done so far</li>
+<li>An updated project timeline (what has been done and what needs to be
+done)</li>
+</ul>
+</section>
+<section id="final-presentation-10" class="level4">
+<h4>Final Presentation (10%)</h4>
+<p>At the end of the class, students will do a poster presentation of
+their projects. Each presentation will be 5 minutes, supported by a
+single-page research poster. This is good practice for conference poster
+sessions, which are a common event at research conferences that often
+attract more junior-level researchers.</p>
+</section>
+<section id="final-code-paper-submission-20" class="level4">
+<h4>Final Code + Paper Submission (20%)</h4>
+<p>Your final submission should contain: code and a paper.</p>
+<ul>
+<li><strong>Code</strong>: Submit the code and a README file with
+instructions regarding how to run the code.</li>
+<li><strong>Paper</strong>: Please use the <a
+href="https://chi2025.acm.org/for-authors/late-breaking-work/">CHI
+Late-Breaking Work (LBW) format</a> for the final paper:
+<ul>
+<li>Template: ACM Master Article Submission Templates (single
+column)</li>
+<li>Length: Up to 8 pages long (excluding references)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="weekly-schedule" class="level2">
+<h2>Weekly Schedule</h2>
+<section id="week-1-0116-introduction" class="level3">
+<h3>Week 1 (01/16) — Introduction</h3>
+<ul>
+<li>Activity
+<ul>
+<li>Setting up python environment for the class</li>
+<li>Selecting <a href="#discussion-leaders">Discussion Leaders</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="week-2-0123-living-in-the-future" class="level3">
+<h3>Week 2 (01/23) — Living in the future</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://onlinelibrary.wiley.com/doi/10.1002/aaai.70043">Human at
+the Center: A Framework for Human-Driven AI Development</a></li>
+<li><a href="https://arxiv.org/abs/2503.04761">Which Economic Tasks are
+Performed with AI? Evidence from Millions of Claude
+Conversations</a></li>
+</ul></li>
+<li>Optional reading
+<ul>
+<li><a
+href="https://www.darioamodei.com/essay/machines-of-loving-grace">Machines
+of Loving Grace</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>Explore different prompting techniques</li>
+<li><a href="https://python.useinstructor.com/prompting/">Zero-shot and
+Few-shots prompting</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="week-3-0130-when-is-ai-useful" class="level3">
+<h3>Week 3 (01/30) — When is AI useful?</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a href="https://www.nature.com/articles/s41562-024-02024-1">When
+combinations of humans and AI are useful: A systematic review and
+meta-analysis</a></li>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/189154">The
+Impact of Generative AI on Critical Thinking: Self-Reported Reductions
+in Cognitive Effort and Confidence Effects From a Survey of Knowledge
+Workers</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>Using LLM to explore how Penn State spends your tuition</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-4-0206-ai-does-your-research" class="level3">
+<h3>Week 4 (02/06) — AI does your research</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a href="https://dl.acm.org/doi/full/10.1145/3706598.3713120">Large
+Language Models in Qualitative Research: Uses, Tensions, and
+Intentions</a></li>
+<li><a
+href="https://programs.sigchi.org/cscw/2025/program/content/210990">The
+AI Review Lottery: Widespread AI-Assisted Peer Reviews Boost Paper
+Scores and Acceptance Rates</a></li>
+</ul></li>
+<li>Optional reading
+<ul>
+<li><a href="https://aclanthology.org/2025.findings-emnlp.631.pdf">From
+Hypothesis to Publication: A Comprehensive Survey of AI-Driven Research
+Support Systems</a></li>
+<li><a href="https://arxiv.org/abs/2504.02234">LLM Social Simulations
+Are a Promising Research Method</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>Implementation using <a
+href="https://streamlit.io/">streamlit</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="week-5-0213-decision-making-with-ai" class="level3">
+<h3>Week 5 (02/13) — Decision-making with AI</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/189584">As
+Confidence Aligns: Understanding the Effect of AI Confidence on Human
+Self-confidence in Human-AI Decision Making</a></li>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/188842">Towards
+Human-AI Deliberation: Design and Evaluation of LLM-Empowered
+Deliberative AI for AI-Assisted Decision-Making</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>Implementation using <a href="https://streamlit.io/">streamlit</a>
+II</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-6-0220-final-project-brainstorm" class="level3">
+<h3>Week 6 (02/20) — Final project brainstorm</h3>
+</section>
+<section id="week-7-0227-conversing-with-ai" class="level3">
+<h3>Week 7 (02/27) — Conversing with AI</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a href="https://dl.acm.org/doi/10.1145/3706598.3714297">ShamAIn:
+Designing Superior Conversational AI Inspired by Shamanism</a></li>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/188666">Toward
+Enabling Natural Conversation with Older Adults via the Design of
+LLM-Powered Voice Agents that Support Interruptions and
+Backchannels</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>Create a multimodal assistant</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-8-0306-ai-for-health" class="level3">
+<h3>Week 8 (03/06) — AI for health</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/188381">The
+Last JITAI? Exploring Large Language Models for Issuing Just-in-Time
+Adaptive Interventions: Fostering Physical Activity in a Prospective
+Cardiac Rehabilitation Setting</a></li>
+<li><a href="https://aclanthology.org/2025.acl-long.55.pdf">PsyDT: Using
+LLMs to Construct the Digital Twin of Psychological Counselor with
+Personalized Counseling Style for Psychological Counseling</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-9-0313-no-class-spring-break" class="level3">
+<h3>Week 9 (03/13) — No Class (Spring break)</h3>
+</section>
+<section id="week-10-0320-final-project-proposal" class="level3">
+<h3>Week 10 (03/20) — Final project proposal</h3>
+</section>
+<section id="week-11-0327-evaluation" class="level3">
+<h3>Week 11 (03/27) —  Evaluation</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://dl.acm.org/doi/full/10.1145/3613904.3642160">Generative AI
+in the Wild: Prospects, Challenges, and Strategies</a></li>
+<li><a href="https://dl.acm.org/doi/10.1145/3706598.3713278">Nurturing
+Capabilities: Unpacking the Gap in Human-Centered Evaluations of
+AI-Based Systems</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-12-0403-human-agent-interaction" class="level3">
+<h3>Week 12 (04/03) — Human-Agent Interaction</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/189485">Synthetic
+Human Memories: AI-Edited Images and Videos Can Implant False Memories
+and Distort Recollection</a></li>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/189640">DreamGarden:
+A Designer Assistant for Growing Games from a Single Prompt</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-13-0410-getting-out-of-the-ai-echo-chamber"
+class="level3">
+<h3>Week 13 (04/10) — Getting out of the AI echo chamber</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/188538">Plurals:
+A System for Guiding LLMs via Simulated Social Ensembles</a></li>
+<li><a
+href="https://dl.acm.org/doi/full/10.1145/3613904.3642459">Generative
+Echo Chamber? Effect of LLM-Powered Search Systems on Diverse
+Information Seeking</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-14-0417-ai-responsibility" class="level3">
+<h3>Week 14 (04/17) — AI responsibility</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/cscw/2025/program/content/211586">Who
+is Responsible, the Advisor or the AI? Understanding the Effects of
+Advisors Disclosing Their AI Use on Their Perceived Responsibility and
+AI Reliance</a></li>
+<li><a
+href="https://programs.sigchi.org/cscw/2025/program/content/211081">Persuasiveness
+of Conversational Agents for Targeted Advertising: Autism and Gen-AI
+Chatbots</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-15-0424-risk-mitigation" class="level3">
+<h3>Week 15 (04/24) — Risk mitigation</h3>
+<ul>
+<li>Readings
+<ul>
+<li><a
+href="https://programs.sigchi.org/cscw/2025/program/content/213359">The
+AI Double Standard: Humans Judge All AIs for the Actions of One</a></li>
+<li><a
+href="https://programs.sigchi.org/chi/2025/program/content/189341">Let’s
+Influence Algorithms Together: How Millions of Fans Build Collective
+Understanding of Algorithms and Organize Coordinated Algorithmic
+Actions</a></li>
+</ul></li>
+<li>Activity
+<ul>
+<li>TBA</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-16-0501-final-presentation" class="level3">
+<h3>Week 16 (05/01) — Final presentation</h3>
+</section>
+</section>
+<section id="course-policy" class="level2">
+<h2>Course Policy</h2>
+<section id="writing-and-speaking" class="level3">
+<h3>Writing and Speaking</h3>
+<p>Writing and speaking are important in this class. Please do speak up
+in class when you have an insight or perspective to share; please also
+be courteous in allowing other students the chance to speak up. Penn
+State provides excellent coaching support for writing skills, including
+one-to-one consultations from the <a
+href="https://gwc.psu.edu/">Graduate Writing Center (GWC)</a>.</p>
+</section>
+<section id="bring-your-own-device-byod-policy" class="level3">
+<h3>Bring Your Own Device (BYOD) Policy</h3>
+<p>Computers are REQUIRED for in-class activities, but this course is
+NOT held in a computer lab. Students are required to BYOD (Bring Your
+Own Device) for in-class activities. Penn State is committed to
+supporting any student who needs a device for use during the semester.
+Please utilize these resources if you have a need at any time:</p>
+<ul>
+<li><p><a
+href="https://pennstate.service-now.com/sp?id=sc_cat_item&amp;sys_id=af267702dbef04d007036bba4b9619cd">Penn
+State’s IT Help Portal</a></p></li>
+<li><p><a
+href="https://libraries.psu.edu/about/departments/media-and-technology-support-services-wagner-annex">Penn
+State Library – Wagner Building Annex</a> Students studying at
+University Park campus can sign out a Mac laptop, PC laptop, iPad with
+attached keyboard, etc., for all or part of any semester. (Web Access
+login required to make reservations through <a
+href="https://wco.psu.edu/sso/patron/#!/">the Patron
+Portal</a>)</p></li>
+</ul>
+</section>
+<section id="programming" class="level3">
+<h3>Programming</h3>
+<p>A key goal of the class is to create and evaluate human-centered AI
+systems. This will require some programming experience in python. If you
+need a refresher on python, you might find <a
+href="https://learning.ist.psu.edu/tutoring/university-park">IST
+peer-tutoring</a> useful.</p>
+</section>
+<section id="attendance" class="level3">
+<h3>Attendance</h3>
+<p>Class attendance is essential and required given our focus on
+hands-on activities (as well as group discussion). Excused absences
+should be approved by the instructor before the class to be missed.
+Please consult with me if you expect to miss more than one class meeting
+during the semester.</p>
+</section>
+<section id="late-submissions" class="level3">
+<h3>Late submissions</h3>
+<p>Late submissions will result in points deduction as follows:</p>
+<ul>
+<li>25% up to 12 hours</li>
+<li>50% up to 24 hours</li>
+<li>100% after 48 hours</li>
+</ul>
+</section>
+<section id="grade-disputes" class="level3">
+<h3>Grade Disputes</h3>
+<p>If you have a question about your graded assignment or exam/quizzes,
+you have 1 week from the date that the assignment grade/comment was
+given to you to email any issues to the professor. Point changes will
+not be made at the end of the semester.</p>
+</section>
+<section id="academic-integrity" class="level3">
+<h3>Academic Integrity</h3>
+<p>Academic integrity is the pursuit of scholarly activity in an open,
+honest and responsible manner. Academic integrity is a basic guiding
+principle for all academic activity at The Pennsylvania State
+University, and all members of the University community are expected to
+act in accordance with this principle. Consistent with this expectation,
+the University’s Code of Conduct states that all students should act
+with personal integrity, respect other students’ dignity, rights and
+property, and help create and maintain an environment in which all can
+succeed through the fruits of their efforts. Academic integrity includes
+a commitment by all members of the University community not to engage in
+or tolerate acts of falsification, misrepresentation or deception. Such
+acts of dishonesty violate the fundamental ethical principles of the
+University community and compromise the worth of work completed by
+others.</p>
+</section>
+<section id="disability-accommodation" class="level3">
+<h3>Disability Accommodation</h3>
+<p>Penn State welcomes students with disabilities into the University’s
+educational programs. Every Penn State campus has an office for students
+with disabilities. Student Disability Resources (SDR) website provides
+contact information for <a
+href="https://equity.psu.edu/offices/student-disability-resources/campus-offices">every
+Penn State campus</a>. For further information, please visit the <a
+href="http://equity.psu.edu/sdr/">Student Disability Resources
+website</a>.</p>
+<p>In order to receive consideration for reasonable accommodations, you
+must contact the appropriate disability services office at the campus
+where you are officially enrolled, participate in an intake interview,
+and provide documentation (<a
+href="http://equity.psu.edu/sdr/guidelines">see documentation
+guidelines</a>). If the documentation supports your request for
+reasonable accommodations, your campus disability services office will
+provide you with an accommodation letter. Please share this letter with
+your instructors and discuss the accommodations with them as early as
+possible. You must follow this process for every semester that you
+request accommodations.</p>
+</section>
+<section id="counseling-and-psychological-services" class="level3">
+<h3>Counseling and psychological services</h3>
+<p>Many students at Penn State face personal challenges or have
+psychological needs that may interfere with their academic progress,
+social development, or emotional well-being. The university offers a
+variety of confidential services to help you through difficult times,
+including individual and group counseling, crisis intervention,
+consultations, online chats, and mental health screenings. These
+services are provided by staff who welcome all students and embrace a
+philosophy respectful of clients’ cultural and religious backgrounds,
+and sensitive to differences in race, ability, gender identity and
+sexual orientation.</p>
+<p><a href="http://studentaffairs.psu.edu/counseling/">Counseling and
+Psychological Services at University Park (CAPS)</a>: 814-863-0395</p>
+<p><a
+href="https://studentaffairs.psu.edu/counseling/caps-campuses">Counseling
+and Psychological Services at Commonwealth Campuses</a></p>
+<p>Penn State Crisis Line (24 hours/7 days/week): 877-229-6400 Crisis
+Text Line (24 hours/7 days/week): Text LIONS to 741741</p>
+</section>
+<section id="educational-equityreport-bias" class="level3">
+<h3>Educational Equity/Report Bias</h3>
+<p>Consistent with University Policy AD29, students who believe they
+have experienced or observed a hate crime, an act of intolerance,
+discrimination, or harassment that occurs at Penn State are urged to
+report these incidents as outlined on the <a
+href="http://equity.psu.edu/reportbias/">University’s Report Bias
+webpage</a>.</p>
+</section>
+<section id="preferred-name-preferred-gender-pronouns" class="level3">
+<h3>Preferred Name &amp; Preferred Gender Pronouns</h3>
+<p>Class rosters are provided to the instructor with the student’s legal
+name. I will gladly honor your request to address you by an alternate
+name or gender pronoun. Please advise me of this preference so that I
+may make appropriate changes to my records.</p>
+</section>
+<section id="student-class-recording" class="level3">
+<h3>Student Class Recording</h3>
+<p>According to University Policy AD 40, students must get express
+permission from their instructor to record class sessions. Screenshots
+showing instructors and students are considered recordings. Even if
+permission is granted, student-initiated recordings must be used only
+for educational purposes for the students enrolled in the initiating
+student’s class. Recordings may be used only during the period in which
+the student is enrolled in the class. Authorized student-initiated
+recordings may not be posted or shared in any fashion outside of the
+class, including online or through other media, without the express
+written consent of the course instructor or appropriate University
+administrator. Students who engage in the unauthorized distribution of
+class recordings may be held in violation of the University’s Code of
+Conduct, and/or liable under Federal and State laws.</p>
+</section>
+<section id="copyright-statement" class="level3">
+<h3>Copyright Statement</h3>
+<p>All course materials students receive or to which students have
+online access are protected by copyright laws. For courses in which they
+have previously been or are currently enrolled, students may use course
+materials and make copies for their own use as needed, but unauthorized
+distribution and/or uploading of materials without the instructor’s
+express permission is strictly prohibited. Policy AD 40 (Recording of
+Classroom Activities and Note Taking Services) addresses this issue.
+Students who engage in the unauthorized distribution of copyrighted
+materials may be held in violation of the University’s Code of Conduct,
+and/or liable under Federal and State laws.</p>
+</section>
+<section id="emergency-notifications" class="level3">
+<h3>Emergency Notifications</h3>
+<p>PSUAlert is available at <a href="https://psualert.psu.edu/"
+class="uri">https://psualert.psu.edu/</a>. PSUAlert is Penn State’s
+emergency notification system for students, faculty and staff. The
+system will be used to alert members of Penn State’s campus communities
+of emergencies, campus closings and other urgent information. Using this
+portal, students, faculty and staff can choose to receive PSUAlert
+messages by text message, voice message and e‑mail. We recommend that
+students enroll in this system.</p>
+</section>
+<section id="communication-expectation" class="level3">
+<h3>Communication Expectation</h3>
+<section id="questions-and-other-communications-with-instructor"
+class="level4">
+<h4>Questions and Other Communications with Instructor</h4>
+<p>Please use Canvas Inbox for communication. Instructors aims to
+respond in 1-2 day to student emails during normal business hours.</p>
+</section>
+<section id="group-work" class="level4">
+<h4>Group work</h4>
+<p>Part of this course will include group work (e.g., discussion during
+class activities). You are expected to collaborate and communicate with
+your group members in a professional manner. Group grades will only be
+given to participating group members.  When providing feedback to a
+classmate, you are expected to offer positive, constructive
+criticism.</p>
+</section>
+<section id="logging-into-canvas" class="level4">
+<h4>Logging into Canvas</h4>
+<p>Students are expected to log in to Canvas daily, to check for course
+updates, announcements, emails, and discussions.</p>
+</section>
+<section id="emailing-through-canvas" class="level4">
+<h4>Emailing through Canvas</h4>
+<p>Students are expected to use Canvas for all course email
+communication with the professor and students are expected to check
+their email and notifications at least daily.</p>
+</section>
+</section>
+<section id="use-of-generative-ai-tools" class="level3">
+<h3>Use of Generative AI tools</h3>
+<p>You are <strong>allowed</strong> to use generative AI tools for the
+assignments and the final project. Why? As you apply for jobs, you will
+need to know how to leverage AI tools to meet the expectations for both
+quality and timeliness. When using generative AI tools, you must show
+understanding of prompt engineering, engage in content generation
+checking, and appropriately reference the tool (e.g., ChatGPT,
+Midjourney) from which the content (e.g., text, image, ideas) was
+generated.</p>
+<ul>
+<li><p>For suggestions on how to properly cite and reference generative
+AI tools, please see the following webpages:</p>
+<ul>
+<li><a href="https://apastyle.apa.org/blog/how-to-cite-chatgpt"
+class="uri">https://apastyle.apa.org/blog/how-to-cite-chatgpt</a></li>
+<li><a
+href="https://guides.libraries.psu.edu/apaquickguide/generativeAI"
+class="uri">https://guides.libraries.psu.edu/apaquickguide/generativeAI</a></li>
+<li><a href="https://dal.ca.libguides.com/CitationStyleGuide/citing-ai"
+class="uri">https://dal.ca.libguides.com/CitationStyleGuide/citing-ai</a></li>
+</ul></li>
+<li><p>For suggestions on how to write prompts that generate the most
+useful information, see this YouTube video: <a
+href="https://www.youtube.com/watch?v=Gaf_jCnA6mc"
+class="uri">https://www.youtube.com/watch?v=Gaf_jCnA6mc</a>.</p></li>
+<li><p>For a better understanding of how generative AI tools work and
+why checking is important, please check this YouTube video <a
+href="https://www.youtube.com/watch?v=bZQun8Y4L2A"
+class="uri">https://www.youtube.com/watch?v=bZQun8Y4L2A</a>.</p></li>
+</ul>
+</section>
+<section id="right-to-make-changes-to-the-syllabus" class="level3">
+<h3>Right to Make Changes to the Syllabus</h3>
+<p>Please note that the specifics of this Course Syllabus are subject to
+change. Instructor will notify students of any major changes and
+students will be responsible for abiding by them. Even if you print this
+syllabus, please check the online version often.</p>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I have adapted in-class activity structures and
+strategies from Dr. <a href="https://www.dcalacci.net/">Dana
+Calacci</a>. Thanks, Dana!<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</article>
+</body>
+</html>
