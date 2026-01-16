@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Saeed Abdullah (saeed@psu.edu)">
+  <meta name="dcterms.date" content="2026-01-16">
+  <title>IST 597 (HCAI) — 2026-01-16</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/theme/teaching-dark.css" id="theme">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/dracula.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level0">
+
+<h1 id="ist-597-001-human-centered-artificial-intelligence-hcai">IST 597
+(001)<br>Human Centered Artificial Intelligence (<span
+class="t-clover">HCAI</span>)</h1>
+<div class="t-left">
+<p>Saeed Abdullah (saeed@psu.edu)</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li><p>Associate Professor in IST</p></li>
+<li><p>Research</p>
+<ul>
+<li>Digital Health</li>
+<li>Human Computer Interaction (HCI)</li>
+<li>Human-centered AI</li>
+</ul></li>
+<li><p>Wellbeing &amp; Health Innovation <a
+href="https://whilab.org/">(WHI)</a> lab</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="teaching-assistant">Teaching assistant</h2>
+<figure>
+<img data-src="./media/yunkai-xu.png" class="profile"
+style="max-width: 20%;" alt="Profile picture of Yunkai Xu" />
+<figcaption>Yunkai Xu (yqx5322@psu.edu)</figcaption>
+</figure>
+</section>
+<section class="slide level0">
+
+<h2 id="what-is-hcai">What is HCAI?</h2>
+</section>
+<section class="slide level0">
+
+<p>“[HCAI] utilizes data to <span class="t-clover"><strong>empower and
+enable its human users</strong></span>, while revealing its underlying
+values, biases, limitations, and the ethics of its data gathering and
+algorithms to foster ethical, interactive, and contestable use”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<p>“[HCAI] is an emerging discipline intent on creating AI systems that
+<span class="t-clover"><strong>amplify and augment rather than displace
+human abilities</strong></span>. HCAI seeks to preserve human control in
+a way that ensures artificial intelligence meets our needs while also
+operating transparently, delivering equitable outcomes, and respecting
+privacy.”</p>
+<div class="t-ref">
+<p><a href="https://archive.is/weAVx">Geyer et al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<p>“HCAI focuses on <span class="t-clover"><strong>amplifying,
+augmenting, and enhancing human performance</strong></span> in ways that
+make systems reliable, safe, and trustworthy”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3419764">Shneiderman, B.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="hcai-landscape">HCAI landscape</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-Capel-et-al.jpg"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<p>“Map of the field of HCAI. The bubbles reflect the relative number of
+papers found in each area.”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="ai-led-vs.-human-values-led">AI led vs. human-values led</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-ai-led.png"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<p><span class="t-salmon"><strong>AI led</strong></span>: “foregrounding
+the AI or algorithmic techniques themselves in service of AI
+products”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="ai-led-vs.-human-values-led-1">AI led vs. human-values led</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-human-led.png"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<p><span class="t-salmon"><strong>Human led</strong></span>:
+“foregrounding human values and concerns”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="situated-in-use-vs.-under-design">Situated in use vs. under
+design</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-situated-use.png"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<p><span class="t-salmon"><strong>Situated in use</strong></span>: “AI
+being studied in use in society to reveal its flaws, limitations, and
+challenges”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="situated-in-use-vs.-under-design-1">Situated in use vs. under
+design</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-under-design.png"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<p><span class="t-salmon"><strong>Under design</strong></span>: “Being
+designed to address specific needs”</p>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="focus-of-this-class">Focus of this class</h2>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:60%;">
+<p><img data-src="./media/hcai-landscape-class-focus.png"
+alt="Map of the field of HCAI. The bubbles reflect the relative number of papers found in each area." /></p>
+</div>
+</div>
+<div class="t-ref">
+<p><a href="https://doi.org/10.1145/3544548.3580959">Capel et
+al.</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="focus-of-this-class-1">Focus of this class</h2>
+<ul>
+<li>More focus on designing and implementing
+<ul>
+<li>Rather than critiquing “situated in use”</li>
+</ul></li>
+<li>Interdisciplinary and applied focus
+<ul>
+<li>We won’t fine tune large language models (LLMs)</li>
+<li>Instead, we will develop and evaluate user-focused systems using
+existing LLMs</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Identifying societal challenges and opportunities of emerging AI
+applications</li>
+<li>Assessing requirements, approaches, and goals for human-centered
+AI</li>
+<li>Applying principles and methods for creating and evaluating
+human-centered AI systems</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="course-requirements">Course requirements</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="programming-requirement-python">Programming requirement
+(python)</h3>
+<ul>
+<li>Will require some programming experience in python
+<ul>
+<li>We will use OpenAI APIs to build systems</li>
+<li>Basic understanding of python should be adequate</li>
+</ul></li>
+<li><a href="https://learning.ist.psu.edu/tutoring/university-park">IST
+peer-tutoring</a> can be useful, if necessary</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="no-textbook-but-youll-need-openai-api-access">No textbook, but
+you’ll need OpenAI API access</h3>
+<ul>
+<li>You will have to pay for the access
+<ul>
+<li>Start with $5</li>
+</ul></li>
+<li>We will talk about creating API keys and access later</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="course-structure">Course structure</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="course-grading">Course grading</h3>
+<ul>
+<li>Class activities — 30%</li>
+<li>Assignment — 20%</li>
+<li>Final Project — 50%</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="class-activity">Class Activity</h3>
+<ul>
+<li>Interactive discussions following assigned readings
+<ul>
+<li>Readers</li>
+<li>Discussion leaders</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="readers">Readers</h4>
+<ul>
+<li><span class="t-salmon"><strong>24 hours before the
+class</strong></span>
+<ul>
+<li>Add a slide for each assigned reading in <a
+href="https://drive.google.com/drive/folders/12-aHbC4HN9gVYCXWFzdZ64QXGaUMnrKy">Google
+Drive</a></li>
+<li>Discussion leaders will use these slides</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="readers-1">Readers</h4>
+<ul>
+<li>There is <a
+href="https://drive.google.com/drive/folders/12-aHbC4HN9gVYCXWFzdZ64QXGaUMnrKy">one
+folder for each class</a></li>
+<li>Each of these folders have one slide deck for each assigned readings
+<ul>
+<li>For example, <a href="#/week-3-0130-when-is-ai-useful">Week 3</a>
+has two decks: <a
+href="https://drive.google.com/drive/folders/1sETSMYcz0s7fcEdKZcaHPiqBXelLsu1-">one
+for Vaccaro et al.</a> and <a
+href="https://drive.google.com/drive/folders/1EyVHMBmZSxTcM-15gVtt3xsCUj4J1MZp">another
+for Lee et al.</a></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="readers-will-create-one-slide-per-article">Readers will create
+one slide per article</h4>
+<ul>
+<li>Respond in 1-2 sentences to the following categories
+<ul>
+<li>Contributions — What are the main contributions here?</li>
+<li>Insights — What did you learn or find compelling?</li>
+<li>Surprised — What challenged your expectations?</li>
+<li>Test of Time — Will this still be true or relevant in 5 years?</li>
+<li>Connections — How does this link to other topics, readings, or the
+world?</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="readers-will-create-one-slide-per-article-1">Readers will create
+one slide per article</h4>
+<p>Each folder has a <span class="t-salmon"><strong>response
+template</strong></span> slide</p>
+</section>
+<section class="slide level0">
+
+<h4
+id="todo-check-the-readings-and-response-template-for-next-week"><span
+class="t-salmon">Todo</span>: Check the readings and response template
+for next week</h4>
+<p>Syllabus → Google Drive → Reading Responses → Week 2</p>
+</section>
+<section class="slide level0">
+
+<h3 id="class-activity-1">Class Activity</h3>
+<ul>
+<li>Interactive discussions following assigned readings
+<ul>
+<li>Readers</li>
+<li><span class="t-salmon"><strong>Discussion
+leaders</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="discussion-leader">Discussion leader</h4>
+<ul>
+<li>Each student will lead <span
+class="t-salmon"><strong>two</strong></span> discussion sessions
+<ul>
+<li>Might work with other students</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="discussion-leader-responsibility">Discussion leader
+responsibility</h4>
+<ul>
+<li>Synthesize responses from the readers (&lt; 5 minutes)</li>
+<li>Plan and organize a class exercise based on
+<ul>
+<li>assigned readings</li>
+<li>reader responses</li>
+<li>related work</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="class-exercise-cant-just-be-lecture">Class exercise <span
+class="t-salmon">can’t</span> just be lecture</h4>
+<ul>
+<li>Aim for
+<ul>
+<li>Interactive activity</li>
+<li>Engaging and fun</li>
+</ul></li>
+<li>30–40 mins
+<ul>
+<li>Followup reflection and discussion (another 30–40 mins)</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="resources-for-designing-interactive-exercises">Resources for
+designing interactive exercises</h4>
+<ul>
+<li><a
+href="https://teachingwriting.stanford.edu/classroom-activities/all-activities">Stanford
+TeachingWriting Activities</a>. E.g.,
+<ul>
+<li><a href="https://teachingwriting.stanford.edu/mining-reading">Mining
+reading</a></li>
+<li><a
+href="https://teachingwriting.stanford.edu/channeling-doubter-and-believer">Doubter
+and Believer</a></li>
+</ul></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom">University
+of Waterloo In-Class Activities List</a>. E.g.,
+<ul>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Three%2Dstep%20interview">Three-step
+interview</a></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Fishbowl%20discussion">Fishbowl
+discussion</a></li>
+<li><a
+href="https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/class-activities-and-assessment-flipped-classroom#:~:text=Think%2DPair%2DShare">Think-Pair-Share</a></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="todo-sign-up-for-two-classes-as-a-discussion-leader"><span
+class="t-salmon">Todo</span>: Sign up for <span class="t-salmon">two
+classes</span> as a discussion leader</h4>
+<ul>
+<li><a
+href="https://docs.google.com/spreadsheets/d/1lPkX30B16xGr4V156Hqzrnshd-_CitjHgzPsL6_nXVw/edit?gid=0#gid=0">Google
+spreadsheet</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="course-grading-1">Course Grading</h3>
+<ul>
+<li>Class activities — 30%</li>
+<li><span class="t-salmon"><strong>Assignment — 20%</strong></span></li>
+<li>Final Project — 50%</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="assignment-20">Assignment — 20%</h3>
+<ul>
+<li>Two assignments</li>
+<li>Will involve some python coding</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="course-grading-2">Course Grading</h3>
+<ul>
+<li>Class activities — 30%</li>
+<li>Assignment — 20%</li>
+<li><span class="t-salmon"><strong>Final Project —
+50%</strong></span></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="final-project-topic">Final project topic</h3>
+<ul>
+<li>Choose whatever you’d want to do as long as:
+<ul>
+<li>Relevant to HCAI concepts</li>
+<li>Involves design and implementation</li>
+</ul></li>
+<li>Not just critiquing an AI system</li>
+<li>Not just interaction prototyping (e.g., Figma)</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="final-project-should-advance-your-career-goals">Final project
+should advance your career goals</h3>
+<ul>
+<li>For academia
+<ul>
+<li>A workshop publication</li>
+<li>Extend it for a peer reviewed paper?</li>
+</ul></li>
+<li>For industry
+<ul>
+<li>Improve your CV and profile</li>
+<li>How can it improve your internship and job applications?</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="final-project-topic-1">Final project topic</h3>
+<p>Consult with me as early as possible regarding a project topic</p>
+</section>
+<section class="slide level0">
+
+<h3 id="final-project-50">Final Project — 50%</h3>
+<ul>
+<li>Proposal submission: 5 points</li>
+<li>Proposal Presentation: 10 points</li>
+<li>Progress Report: 5 points</li>
+<li>Final presentation: 10 points</li>
+<li>Final submission: 20 points</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="final-grade-policy">Final Grade Policy</h3>
+<div class="columns">
+<div class="column">
+<ul>
+<li>A: 100–93%</li>
+<li>A-: 92–90%</li>
+<li>B+: 89–87%</li>
+<li>B: 86–83%</li>
+<li>B-: 82–80%</li>
+</ul>
+</div><div class="column">
+<ul>
+<li>C+: 79–77%</li>
+<li>C: 76–70%</li>
+<li>D: 69–60%</li>
+<li>F: &lt;60%</li>
+</ul>
+</div>
+</div>
+<p>The cutoff point for each grade is the lower number <span
+class="t-salmon"><strong>without rounding</strong></span> (e.g., 89.9%
+will result in B+)</p>
+</section>
+<section class="slide level0">
+
+<h2 id="course-policy">Course policy</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="office-hours-using-zoom">Office hours — Using Zoom</h3>
+<ul>
+<li>Schedule a meeting using the <a
+href="https://outlook.office365.com/book/IST597HCAIOfficeHours@PennStateOffice365.onmicrosoft.com/">booking
+page</a></li>
+<li>Saeed Abdullah: Tuesday 3:00–4:00pm</li>
+<li>Yunkai Xu: Thursday 2:00–3:30pm</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="late-submission-point-deduction">Late submission: Point
+deduction</h3>
+<ul>
+<li>25% up to 12 hours</li>
+<li>50% up to 24 hours</li>
+<li>100% after 48 hours</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="grade-disputes">Grade disputes</h3>
+<ul>
+<li>Must be done within 1 week of grading</li>
+<li>Point changes will <span
+class="t-salmon"><strong>not</strong></span> be made at the end of the
+semester</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="attendance-is-critical">Attendance is critical</h3>
+<ul>
+<li>Key approach: Learning by doing</li>
+<li>Classes will involve activities
+<ul>
+<li>Helping to understand concept</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="need-to-skip-a-class-let-me-know-beforehand">Need to skip a
+class? Let me know <span
+class="t-salmon"><strong>beforehand</strong></span></h3>
+<ul>
+<li>We will allow skipping classes for
+<ul>
+<li>“<a
+href="https://aappm.psu.edu/policy/e-11-class-attendance">University-sanctioned
+activity</a>”</li>
+<li>Health reasons 🤧</li>
+</ul></li>
+<li>You must communicate to us <span class="t-salmon"><strong>before the
+class</strong></span></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="academic-integrity">Academic integrity</h3>
+<ul>
+<li>You are responsible to read and follow the <a
+href="https://ist.psu.edu/current-students/current-undergraduate-students/academic-advising/academic-integrity">Code
+of Conduct</a>
+<ul>
+<li>When in doubt, talk to us</li>
+</ul></li>
+<li>I am <span class="t-salmon"><strong>required</strong></span> to
+report any academic integrity violation in the class</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="for-this-course-code-is-similar-to-writing">For this course:
+Code is similar to writing</h3>
+<ul>
+<li>Similar academic integrity rules apply in this course</li>
+<li>Assignments must consist of your individual efforts
+<ul>
+<li>No copying code from other students</li>
+</ul></li>
+<li>It is ok to help others, but do not share code directly
+<ul>
+<li>A good rule of thumb: <strong>close your laptop as you help
+others</strong></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="disability-accommodation-please-let-me-know">Disability
+accommodation: <span class="t-salmon">Please let me know</span></h3>
+</section>
+<section class="slide level0">
+
+<h3 id="counseling-and-psychological-services">Counseling and
+psychological services</h3>
+<ul>
+<li>Your overall wellbeing is important</li>
+<li>Counseling and Psychological Services at University Park</li>
+<li>Don’t hesitate to get in touch if I can help</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="class-activity-2">Class activity</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="introduce-yourself">Introduce yourself</h3>
+<ul>
+<li>Name</li>
+<li>Academic journey
+<ul>
+<li>Current degree / major, …</li>
+</ul></li>
+<li>An interesting fact about yourself</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="i-used-to-be-quite-good-in-wii-tennis">I used to be quite good
+in Wii tennis</h4>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:80%;">
+<p><img data-src="./media/wii-tennis.png"
+alt="Screenshot from Wii tennis game" /></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h4 id="i-also-play-real-tennis-but-alas-not-as-good-as-i-wish-to-be">I
+also play “real” tennis — But alas, not as good as I wish to be</h4>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:95%;">
+<p><img data-src="./media/penn-state-tennis.png"
+alt="Indoor tennis courts at Penn State" /></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="check-out-notebooklm">Check out NotebookLM</h3>
+<ul>
+<li><p>Go to <a
+href="https://notebooklm.google.com/">NotebookLM</a></p></li>
+<li><p>Use the <a
+href="https://www.dropbox.com/scl/fi/vybbk3vrednz3ht1yjgi8/syllabus-ist-597-spring-2026.md?rlkey=obspvonak2e60kv4q0hmtbfqs&amp;e=2&amp;dl=0">syllabus
+(in markdown)</a> as a source</p></li>
+<li><p>Can you get it to make an error in answering questions?</p>
+<ul>
+<li>E.g., what’s the late-submission penalty?</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="check-out-notebooklm-1">Check out NotebookLM</h4>
+<ul>
+<li>Generate a slide deck using the syllabus</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="check-out-notebooklm-2">Check out NotebookLM</h4>
+<ul>
+<li>Generate a podcast using the syllabus</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="group-discussion-what-llms-can-never-do">Group discussion — What
+LLMs can never do?</h3>
+<ul>
+<li>2 persons group</li>
+<li>5 things that you think LLM will never be able to do</li>
+<li>Post your response <a
+href="https://psu.instructure.com/courses/2443462/discussion_topics/17204437">in
+the discussion forum</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="todos-before-next-class">Todos before next class</h2>
+<ul>
+<li><p>Sign up for <span class="t-salmon">two classes</span> as a
+discussion leader in the <a
+href="https://docs.google.com/spreadsheets/d/1lPkX30B16xGr4V156Hqzrnshd-_CitjHgzPsL6_nXVw/edit?gid=0#gid=0">Google
+spreadsheet</a></p></li>
+<li><p>Readers:</p>
+<ul>
+<li><span class="t-salmon"><strong>24 hours before the
+class</strong></span> (i.e., before Thursday 1:00pm)</li>
+<li>Add a slide for each assigned reading in <a
+href="https://drive.google.com/drive/folders/12-aHbC4HN9gVYCXWFzdZ64QXGaUMnrKy">Google
+Drive</a></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="overall-goals-for-the-class">Overall goals for the class</h3>
+<div class="t-left">
+<p><span class="t-clover"><strong>Learn</strong></span> about exciting
+things. Get your <span class="t-clover"><strong>CV &amp;
+portfolio</strong></span> shining. Have <strong><span
+class="t-salmon">fun</span></strong>!</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="course-feedback">Course feedback</h2>
+<ul>
+<li>Feedback = ❤️</li>
+<li>Help me make the class better
+<ul>
+<li>For you and for your fellow students next year!</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/search/search.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: true,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
