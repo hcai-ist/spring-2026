@@ -289,14 +289,7 @@ Your final submission should contain: code and a paper.
 * Activity
     * TBA
 
-### Week 15 (04/24) — Risk mitigation
-
-* Readings
-    * [The AI Double Standard: Humans Judge All AIs for the Actions of One](https://programs.sigchi.org/cscw/2025/program/content/213359)
-    * [Let's Influence Algorithms Together: How Millions of Fans Build Collective Understanding of Algorithms and Organize Coordinated Algorithmic Actions](https://programs.sigchi.org/chi/2025/program/content/189341)
-
-* Activity
-    * TBA
+### Week 15 (04/24) — TBA
 
 ### Week 16 (05/01) — Final presentation
 
