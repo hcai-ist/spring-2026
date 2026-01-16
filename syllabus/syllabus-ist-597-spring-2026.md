@@ -73,15 +73,15 @@ The cutoff point for each grade is the lower number without rounding
 ## Course Requirements
 
 ### Class Activity (30%)
-We will conduct interactive discussion sessions[^acknowledgement] based on the theme and assigned readings on a given week. Each student will lead two discussion sessions during the semester. **Sign up for two classes as a discussion leader in [this spreadsheet](#)**.
+We will conduct interactive discussion sessions[^acknowledgement] based on the theme and assigned readings on a given week. Each student will lead two discussion sessions during the semester. **Sign up for two classes as a discussion leader in [this spreadsheet](https://docs.google.com/spreadsheets/d/1lPkX30B16xGr4V156Hqzrnshd-_CitjHgzPsL6_nXVw/edit?gid=0#gid=0)**.
 
 #### Readers
 Readers will create one slide for each of the assigned readings:
 
-* Add your response to the corresponding slide deck in [Google Drive]()
-	* There is [one folder for each class]().
+* Add your response to the corresponding slide deck in [Google Drive](https://drive.google.com/drive/folders/12-aHbC4HN9gVYCXWFzdZ64QXGaUMnrKy)
+	* There is [one folder for each class](https://drive.google.com/drive/folders/12-aHbC4HN9gVYCXWFzdZ64QXGaUMnrKy).
 	* Each of these folders have one slide deck for each assigned readings
-		* For example, [Week 3](#week-3-0130-when-is-ai-useful) has two decks: [one for Vaccaro et al.]() and [another for Lee et al.]()
+		* For example, [Week 3](#week-3-0130-when-is-ai-useful) has two decks: [one for Vaccaro et al.](https://drive.google.com/drive/folders/1sETSMYcz0s7fcEdKZcaHPiqBXelLsu1-) and [another for Lee et al.](https://drive.google.com/drive/folders/1EyVHMBmZSxTcM-15gVtt3xsCUj4J1MZp)
 	* Create one slide per article
 * Respond in 1-2 sentences to the following categories
 	* Contributions — What are the main contributions here?
