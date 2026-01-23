@@ -4,6 +4,7 @@ subtitle: Human Centered Artificial Intelligence (HCAI)
 date-meta: 2026
 author-meta: Saeed Abdullah
 lang: en-US
+toc-title: Course Content
 css: ./common/tufte.css
 section-divs: true
 include-before: |
@@ -12,13 +13,14 @@ include-before: |
 include-after: |
     </article>
 ---
-## Syllabus
+
 ## [Syllabus](./syllabus/index.html)
 
 ## Weekly Schedule
 
 ### Week 2 — 2026-01-23
 * [Slides](./slides/hcai-slides-2026-01-23/hcai-slides-2026-01-23.html)
+* [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-01.ipynb)
 
 ### Week 1 — 2026-01-16
 * [Slides](./slides/hcai-slides-2026-01-16/hcai-slides-2026-01-16.html)
