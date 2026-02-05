@@ -301,7 +301,7 @@ How many shots?
 
 ::::{.columns style="justify-content: center; align-items: center; align-items: center;"}
 :::{.column style="background-color: #ffff; max-width:35%;"}
-![](./media/meta-prompting){alt=""}
+![](./media/meta-prompting.png){alt=""}
 :::
 ::::
 
