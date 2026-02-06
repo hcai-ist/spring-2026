@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Saeed Abdullah (saeed@psu.edu)">
+  <meta name="dcterms.date" content="2026-02-06">
+  <title>IST 597 (HCAI) — 2026-02-06</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/theme/teaching-dark.css" id="theme">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/dracula.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level0">
+
+<h1 id="how-does-penn-state-spend-your-tuition">How does Penn State
+spend your tuition?</h1>
+<h4 id="using-llm-for-data-extraction">Using LLM for data
+extraction</h4>
+</section>
+<section class="slide level0">
+
+<h2 id="recap-from-last-class">Recap from last class</h2>
+</section>
+<section class="slide level0">
+
+<h2 id="we-will-focus-on-text-based-prompting">We will focus on text
+based prompting</h2>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:75%;">
+<p><img data-src="./media/text-prompting.png"
+alt="A tree showing categories of core prompt techniques. It includes &#39;text based techniques&#39; as the root element and &#39;multilingual techniques&#39; and &#39;multimodal techniques&#39; as the children elements" /></p>
+</div>
+</div>
+<div class="t-ref">
+<p><a href="http://arxiv.org/abs/2406.06608">The Prompt Report: A
+Systematic Survey of Prompting Techniques</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="key-resources">Key resources</h2>
+<ul>
+<li><a href="http://arxiv.org/abs/2406.06608">The Prompt Report: A
+Systematic Survey of Prompting Techniques</a></li>
+<li><a href="https://python.useinstructor.com/prompting/">Prompt
+engineering using Instructor</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="some-definitions-first">Some definitions first</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="whats-a-prompt">What’s a prompt?</h3>
+<ul>
+<li>“A prompt is an input to a Generative AI model, that is used to
+guide its output”</li>
+<li>“Prompts may consist of text, image, sound, or other media”</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="prompting-is-for-in-context-learning-icl">Prompting is for <span
+class="t-clover">in-context learning (ICL)</span></h2>
+<ul>
+<li><p>“the ability of GenAIs to learn skills and tasks by providing
+them with exemplars and or relevant instructions within the
+prompt”</p></li>
+<li><p><span class="t-salmon"><strong>No</strong></span> retraining of
+models (<span class="t-salmon"><strong>no</strong></span> model weight
+updates)</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="whats-a-prompt-template">What’s a prompt template?</h3>
+<ul>
+<li>“A prompt template is a function that contains one or more variables
+which will be replaced by some media (usually text) to create a
+prompt.”</li>
+<li>“a prompt template becomes a prompt when input is inserted into
+it.”</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="whats-a-prompt-template-1">What’s a prompt template?</h3>
+<ul>
+<li><p>“a prompt template becomes a prompt when input is inserted into
+it.”</p></li>
+<li><p>Template: “Write a poem about {{TOPIC}}”</p>
+<ul>
+<li>Prompt: “Write a poem about HCAI”</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="can-have-multiple-variables">Can have multiple variables</h4>
+<ul>
+<li>“Write a {{POEM FORM}} about {{TOPIC}}”
+<ul>
+<li>Write a sonnet about HCAI</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="prompt-chain">Prompt chain</h3>
+<ul>
+<li>“two or more prompt templates used in succession”</li>
+<li>“The output of the prompt generated by the first prompt template is
+used to parameterize the second template, continuing until all templates
+are exhausted”</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="prompt-engineering">Prompt engineering</h2>
+<ul>
+<li>“the iterative process of developing a prompt by modifying or
+changing the prompting technique that you are using”</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="prompt-components">Prompt components</h3>
+<ul>
+<li>Directives</li>
+<li>Examples/Shots/Exemplars</li>
+<li>Output Formatting</li>
+<li>Style</li>
+<li>Role</li>
+<li>Context
+<ul>
+<li>Additional Information</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="directives-whats-to-be-done">Directives — what’s to be
+done?</h4>
+<ul>
+<li>Explicit
+<ul>
+<li>“Write a poem”</li>
+</ul></li>
+<li>Implicit
+<ul>
+<li>“Good morning: buen día</li>
+<li>Good night: ”</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="examplesexemplarsshots">Examples/Exemplars/Shots</h4>
+<p>Demonstrations that guide the GenAI to accomplish a task</p>
+</section>
+<section class="slide level0">
+
+<h4 id="shot">1-shot</h4>
+<ul>
+<li>“Good morning: buen día</li>
+<li>Good night: ”</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h4 id="few-shot">Few-shot</h4>
+<pre ><code >2+2: four
+4+5: nine
+8+0:</code></pre>
+<p>How many shots?</p>
+</section>
+<section class="slide level0">
+
+<h2 id="text-based-prompting-techniques">Text based prompting
+techniques</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="text-based-prompting-techniques-lots-of-options">Text based
+prompting techniques — <span class="t-salmon">lots</span> of
+options!</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:35%;">
+<p><img data-src="./media/prompting-strategy.png" alt="" /></p>
+</div>
+</div>
+<div class="t-ref">
+<p><a href="http://arxiv.org/abs/2406.06608">The Prompt Report: A
+Systematic Survey of Prompting Techniques</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="text-based-prompting-techniques-1">Text based prompting
+techniques</h2>
+<ul>
+<li>Zero-shot</li>
+<li>Few-shot</li>
+<li>Chain of thought (CoT)</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="meta-prompting">Meta prompting</h2>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:35%;">
+<p><img data-src="./media/meta-prompting.png" alt="" /></p>
+</div>
+</div>
+<div class="t-ref">
+<p><a href="https://arxiv.org/pdf/2311.05661">Prompt Engineering a
+Prompt Engineer</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="today">Today</h2>
+<ul>
+<li>Output formatting</li>
+<li>Data extraction</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="output-formatting">Output formatting</h2>
+<ul>
+<li><p>We often want structured output</p></li>
+<li><p>When you are <span class="t-salmon"><strong>using LLMs as a
+pipeline or infrastructure</strong></span> for further processing, you
+want <span class="t-clover"><strong>consistency</strong></span></p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="free-form-text-output-is-not-fun-to-parse">Free form text output
+is not fun to parse</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:45%;">
+<p><img data-src="./media/free-form-response.png" alt="" /></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="we-want-structured-output-using-instructor">We want structured
+output (using <a
+href="https://python.useinstructor.com/">Instructor</a>)</h3>
+<pre ><code class="python" data-line-numbers="1">import instructor
+
+class Response(BaseModel):
+    message: str
+
+r = client.responses.create(
+    input="Write a haiku about IST 597 (HCAI)",
+    response_model=Response,
+)</code></pre>
+</section>
+<section class="slide level0">
+
+<h3 id="define-the-structure-of-response-from-llms">Define the structure
+of response from LLMs</h3>
+<pre ><code class="python" data-line-numbers="3-4,8">import instructor
+
+class Response(BaseModel):
+    message: str
+
+r = client.responses.create(
+    input="Write a haiku about IST 597 (HCAI)",
+    response_model=Response,
+)</code></pre>
+<p><code>response_model</code>: expected structure</p>
+</section>
+<section class="slide level0">
+
+<h3 id="different-data-types">Different data types</h3>
+<pre ><code class="python">class User(BaseModel):
+    name: str
+    age: int</code></pre>
+<div class="t-ref">
+<p><a
+href="https://python.useinstructor.com/learning/getting_started/response_models/">Understanding
+Response Models</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="what-data-type-should-we-use-for-financial-data">What data type
+should we use for financial data?</h3>
+<pre ><code class="python" data-line-numbers="2">class BudgetAnswer(BaseModel):
+    amount: float</code></pre>
+<div class="t-ref">
+<p><a
+href="https://python.useinstructor.com/learning/getting_started/response_models/">Understanding
+Response Models</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="how-does-penn-state-spend-your-tuition-1">How does Penn State
+spend your tuition?</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="goal-today">Goal today</h3>
+<ul>
+<li>Bridging LLM and external knowledge sources</li>
+<li>Integrate data from different source formats
+<ul>
+<li>html, markdown, pdf,</li>
+</ul></li>
+<li>Using LLM for financial statement analysis
+<ul>
+<li>Exploring its <span
+class="t-clover"><strong>strength</strong></span> and <span
+class="t-salmon"><strong>weakness</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="how-does-penn-state-spend-your-tuition-2">How does Penn State
+spend your tuition?</h2>
+<ul>
+<li>Data
+<ul>
+<li><a href="https://budgetandfinance.psu.edu/budget-allocations">Budget
+Allocations</a></li>
+<li><a href="https://budgetandfinance.psu.edu/public-reports">Right To
+Know Law Report</a></li>
+<li>Data available in our <a
+href="https://github.com/hcai-ist/activity-spring-2026/tree/main/data/data-activity-03">class
+github repo</a></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="class-activity">Class activity</h3>
+<ul>
+<li><a
+href="https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-03.ipynb">Activity
+03</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="ask-llm-to-use-an-external-knowledge-source-directly">Ask LLM to
+use an external knowledge source directly</h3>
+<ul>
+<li>“Analyze the document at the given URL and answer the query”</li>
+<li>Did it work?</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="alternative-approach">Alternative approach</h3>
+<ul>
+<li><p>Extract data from external source and integrate in the
+prompt</p></li>
+<li><p>I converted <a
+href="https://budgetandfinance.psu.edu/budget-allocations">the web
+page</a> into <a
+href="https://github.com/hcai-ist/activity-spring-2026/tree/main/data/data-activity-03">markdown
+table</a></p></li>
+<li><p>We can integrate the markdown data into the prompt</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="class-activity-1">Class activity</h3>
+<p>How much money is allocated for Information Sciences &amp; Technology
+in FY28?</p>
+</section>
+<section class="slide level0">
+
+<h3 id="todo">Todo</h3>
+<p>Which UP colleges have the highest positive and negative percentage
+changes in 2027 and 2028?</p>
+</section>
+<section class="slide level0">
+
+<h3 id="todo-1">Todo</h3>
+<ul>
+<li>Analyze the allocation for other units
+<ul>
+<li>Add data from: Commonwealth Campuses
+<ul>
+<li>Click on ‘Raw’ for <a
+href="https://raw.githubusercontent.com/hcai-ist/activity-spring-2026/refs/heads/main/data/data-activity-03/budget-all-tables.md">markdown
+format</a></li>
+</ul></li>
+<li>Come up with 3 questions to answer</li>
+<li>Complete code to answer these questions</li>
+<li>Check answers for accuracy</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="what-if-our-data-is-in-pdf">What if our data is in pdf?</h3>
+<ul>
+<li><a
+href="https://budgetandfinance.psu.edu/public-reports#:~:text=Right%20To%20Know%20Law%20Report">Right
+To Know Law Reports</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="options-for-handling-pdf-data">3 options for handling pdf
+data</h3>
+<ul>
+<li><p>Do it by yourself</p>
+<ul>
+<li>Extract the text data from the pdf using a third-party package</li>
+<li><code>pymupdf</code> converts <span class="t-salmon"><strong>pdf to
+markdown</strong></span></li>
+</ul></li>
+<li><p>Use the vision API to convert image to text</p></li>
+<li><p>Use the <a
+href="https://platform.openai.com/docs/guides/tools-file-search">file
+search</a> API</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="using-data-in-pdf-format-as-a-knowledge-source">Using data in
+pdf format as a knowledge source</h3>
+<ul>
+<li>Extract textual data from the pdf using an external library
+<code>pymupdf4llm</code></li>
+<li>Use the textual data as part of the prompt</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="todo-2">Todo</h3>
+<ul>
+<li>How much did the CEO of Penn State Health earn?</li>
+<li>What was the biggest source of PSU revenue?</li>
+<li>How much did Penn State spend on advertising and promotion?</li>
+<li>How much did IST Dean earn?</li>
+</ul>
+</section>
+<section class="slide level0">
+
+</section>
+    </div>
+  </div>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/search/search.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: true,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

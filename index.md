@@ -17,6 +17,11 @@ include-after: |
 ## [Syllabus](./syllabus/index.html)
 
 ## Weekly Schedule
+
+### Week 4 — 2026-02-06
+* [Slides](./slides/hcai-slides-2026-02-06/hcai-slides-2026-02-06.html)
+* [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-03.ipynb)
+
 ### Week 3 — 2026-01-30
 * [Slides](./slides/hcai-slides-2026-01-30/hcai-slides-2026-01-30.html)
 * [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-02.ipynb)
