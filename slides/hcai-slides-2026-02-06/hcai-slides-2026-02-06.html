@@ -476,6 +476,19 @@ pdf format as a knowledge source</h3>
 </section>
 <section class="slide level0">
 
+<h3 id="using-pymupdf4llm-for-extracting-pdf-data">Using
+<code>pymupdf4llm</code> for extracting pdf data</h3>
+<pre ><code class="python">## We will extract page 45–46
+# Note that `pymupdf4llm` uses 0-based index for pages
+highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf", pages=[44, 45])</code></pre>
+<div class="t-ref">
+<p><a
+href="https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29">pymupdf4llm
+documentation</a></p>
+</div>
+</section>
+<section class="slide level0">
+
 <h3 id="todo-2">Todo</h3>
 <ul>
 <li>How much did the CEO of Penn State Health earn?</li>
@@ -483,6 +496,30 @@ pdf format as a knowledge source</h3>
 <li>How much did Penn State spend on advertising and promotion?</li>
 <li>How much did IST Dean earn?</li>
 </ul>
+</section>
+<section class="slide level0">
+
+<h3 id="processing-the-whole-pdf">Processing the whole pdf</h3>
+<pre ><code class="python">highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf")</code></pre>
+<p>Omitting <code>pages</code> argument will process the whole pdf. What
+happens if you try it?</p>
+<div class="t-ref">
+<p><a
+href="https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29">pymupdf4llm
+documentation</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="processing-the-whole-pdf-1">Processing the whole pdf</h3>
+<pre ><code class="python">highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf")</code></pre>
+<p>This pdf is too large to include in the prompt. Might work for a
+smaller pdf</p>
+<div class="t-ref">
+<p><a
+href="https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29">pymupdf4llm
+documentation</a></p>
+</div>
 </section>
 <section class="slide level0">
 

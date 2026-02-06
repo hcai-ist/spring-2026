@@ -370,6 +370,20 @@ Which UP colleges have the highest positive and negative percentage changes in 2
 
 ---
 
+### Using `pymupdf4llm` for extracting pdf data
+
+```python
+## We will extract page 45–46
+# Note that `pymupdf4llm` uses 0-based index for pages
+highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf", pages=[44, 45])
+```
+
+:::{.t-ref}
+[pymupdf4llm documentation](https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29)
+:::
+
+---
+
 
 ### Todo
 
@@ -379,5 +393,35 @@ Which UP colleges have the highest positive and negative percentage changes in 2
 * How much did IST Dean earn?
 
 ---
+
+### Processing the whole pdf
+
+```python
+highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf")
+```
+
+Omitting `pages` argument will process the whole pdf. What happens if you try it?
+
+:::{.t-ref}
+[pymupdf4llm documentation](https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29)
+:::
+
+---
+
+### Processing the whole pdf
+
+```python
+highest_paid = pymupdf4llm.to_markdown("right_to_know_2024.pdf")
+```
+
+This pdf is too large to include in the prompt. Might work for a smaller pdf
+
+:::{.t-ref}
+[pymupdf4llm documentation](https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html#pymupdf4llm-api:~:text=pages%20%28list%29)
+:::
+
+---
+
+
 
 
