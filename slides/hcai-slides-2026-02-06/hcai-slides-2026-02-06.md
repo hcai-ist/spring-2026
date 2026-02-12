@@ -282,6 +282,9 @@ class BudgetAnswer(BaseModel):
 
 ## How does Penn State spend your tuition?
 
+* **Intercollegiate Athletics** and **College of Medicine** are "[self-sustaining units](https://www.psu.edu/news/administration/story/youve-asked-weve-answered-top-budget-faqs?utm_audience=Faculty&utm_source=newswire&utm_medium=email&utm_campaign=Penn%20State%20Today&utm_content=02-03-2026-21-01&utm_term=TopStories%20-%202#:~:text=Self%2Dsustaining%20units%20%28%241%20billion%29%3A)"
+    + No tuition or state funding
+
 ---
 
 ### Goal today
