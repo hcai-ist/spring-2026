@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Saeed Abdullah" />
+  <meta name="dcterms.date" content="2026" />
+  <title>Assignment 01 — WellAsk</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../common/tufte.css" />
+</head>
+<body>
+<article>
+<header id="title-block-header">
+<h1 class="title">Assignment 01 — WellAsk</h1>
+<p class="subtitle">IST 597 (HCAI) — Spring 2026</p>
+</header>
+<section>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Course Content</h2>
+<ul>
+<li><a href="#description" id="toc-description">Description</a></li>
+<li><a href="#dataset" id="toc-dataset">Dataset</a></li>
+<li><a href="#requirements" id="toc-requirements">Requirements</a>
+<ul>
+<li><a href="#summary-report" id="toc-summary-report">Summary
+Report</a></li>
+</ul></li>
+<li><a href="#deliverables" id="toc-deliverables">Deliverables</a></li>
+<li><a href="#implementation-resources"
+id="toc-implementation-resources">Implementation resources</a></li>
+<li><a href="#grading" id="toc-grading">Grading</a></li>
+</ul>
+</nav>
+</section>
+<section id="description" class="level2">
+<h2>Description</h2>
+<p>A startup company wants to implement <strong>WellAsk</strong> — a
+question answering (QA) system focusing on mental health needs of
+different communities. <strong>WellAsk</strong> will use reports
+published by organizations to answer user queries.</p>
+</section>
+<section id="dataset" class="level2">
+<h2>Dataset</h2>
+<p>The dataset contains two pdf reports:</p>
+<ul>
+<li>“Mental health conditions in the South-East Asia Region” published
+by <a href="https://iris.who.int/handle/10665/372954">WHO</a> (<a
+href="./WHO-mental-health-SE-Asia.pdf">pdf</a>)</li>
+<li>“2025 State of Mental Health in America Report” from <a
+href="https://mhanational.org/wp-content/uploads/2025/09/State-of-Mental-Health-2025.pdf">Mental
+Health America (MHA)</a> (<a
+href="State-of-Mental-Health-2025.pdf">pdf</a>)</li>
+</ul>
+</section>
+<section id="requirements" class="level2">
+<h2>Requirements</h2>
+<p>You will implement <strong>WellAsk</strong> by using OpenAI APIs. You
+will then compare the performance of <strong>WellAsk</strong> with <a
+href="https://notebooklm.google/">NotebookLM</a> (see <a
+href="#summary-report">below</a>).</p>
+<p>It is critical that <strong>WellAsk</strong> only uses the provided
+file content to answer questions. You should aim to minimize
+confabulation/hallucination. <em>If the files do not contain relevant
+information, it should not aim to provide an answer</em>.</p>
+<section id="summary-report" class="level3">
+<h3>Summary Report</h3>
+<p>Your report should include:</p>
+<ul>
+<li>Answers from <strong>WellAsk</strong> and <a
+href="https://notebooklm.google/">NotebookLM</a> for the following
+questions:
+<ul>
+<li>What’s the estimated number of people living with the following
+mental health conditions in total across South East Asia and the US:
+<ul>
+<li>depressive disorders</li>
+<li>anxiety disorders</li>
+<li>bipolar disorders</li>
+<li>schizophrenia</li>
+</ul></li>
+<li>What’s the extent and impact of Postpartum depression across
+different countries and states?</li>
+<li>How has the burden of mental health conditions changed over the
+years in Bhutan, Thailand, and Alabama?</li>
+<li>What’s the number of psychiatrists per 100,000 population in a given
+region?</li>
+<li>Among Pennsylvania, West Virginia, India, and Bangladesh, which
+region has:
+<ul>
+<li>the highest rate of substance abuse?</li>
+<li>the highest ratio of mental health provider to individuals in need
+(i.e., living with mental health conditions)</li>
+</ul></li>
+<li>What’s the estimated number of people with depressive disorders in
+South Korea?</li>
+<li>What’s the percentage of GDP spent on mental health care in
+Paraguay?</li>
+</ul></li>
+<li>Your overall assessment of accuracy of these answers from
+<strong>WellAsk</strong> and NotebookLM</li>
+<li>In what cases <strong>WellAsk</strong> perform better than
+NotebookLM? When does it perform worse?</li>
+<li>What factors impact the performance difference between
+<strong>WellAsk</strong> and NotebookLM?</li>
+</ul>
+</section>
+</section>
+<section id="deliverables" class="level2">
+<h2>Deliverables</h2>
+<p>Please upload two files:</p>
+<ul>
+<li>a python/notebook file containing your implementation. Please note
+that we must be able to run your code for grading. If your
+implementation has any run-time requirements (e.g., a specific library),
+mention it in your submission.</li>
+<li>a pdf with your summary report</li>
+</ul>
+</section>
+<section id="implementation-resources" class="level2">
+<h2>Implementation resources</h2>
+<p>Our class activities included two options in handling pdf data:</p>
+<ul>
+<li><a
+href="https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-03.ipynb">pymupdf
+in Activity 03</a></li>
+<li><a
+href="https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-04.ipynb">File
+search tool in Activity 04</a></li>
+</ul>
+<p>You can use any (both?) options to implement
+<strong>WellAsk</strong>. If you are using file search tools, you might
+want to implement two steps:</p>
+<ul>
+<li>Extract relevant text from all given sources using file search
+tools</li>
+<li>Perform the user query in returned text (i.e., similar to our
+previous class activity)</li>
+</ul>
+</section>
+<section id="grading" class="level2">
+<h2>Grading</h2>
+<ul>
+<li><strong>WellAsk</strong> implementation using OpenAI APIs (5
+points)</li>
+<li>Implementing steps to mitigate confabulation/hallucination (1
+points)</li>
+<li>Summary report (4 points)</li>
+</ul>
+</section>
+</article>
+</body>
+</html>
