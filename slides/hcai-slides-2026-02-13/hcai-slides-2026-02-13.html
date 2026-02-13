@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Saeed Abdullah (saeed@psu.edu)">
+  <meta name="dcterms.date" content="2026-02-13">
+  <title>IST 597 (HCAI) — 2026-02-13</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/dist/theme/teaching-dark.css" id="theme">
+  <link rel="stylesheet" href="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/dracula.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level0">
+
+<h2 id="using-llm-for-data-extraction">Using LLM for data
+extraction</h2>
+</section>
+<section class="slide level0">
+
+<h2 id="recap-from-last-class">Recap from last class</h2>
+</section>
+<section class="slide level0">
+
+<ul>
+<li>Output formatting</li>
+<li>Data extraction</li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="output-formatting">Output formatting</h2>
+<ul>
+<li><p>We often want structured output</p></li>
+<li><p>When you are <span class="t-salmon"><strong>using LLMs as a
+pipeline or infrastructure</strong></span> for further processing, you
+want <span class="t-clover"><strong>consistency</strong></span></p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="free-form-text-output-is-not-fun-to-parse">Free form text output
+is not fun to parse</h3>
+<div class="columns"
+style="justify-content: center; align-items: center; align-items: center;">
+<div class="column" style="background-color: #ffff; max-width:45%;">
+<p><img data-src="./media/free-form-response.png" alt="" /></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h3 id="we-want-structured-output-using-instructor">We want structured
+output (using <a
+href="https://python.useinstructor.com/">Instructor</a>)</h3>
+<pre ><code class="python" data-line-numbers="1">import instructor
+
+class Response(BaseModel):
+    message: str
+
+r = client.responses.create(
+    input="Write a haiku about IST 597 (HCAI)",
+    response_model=Response,
+)</code></pre>
+</section>
+<section class="slide level0">
+
+<h3 id="define-the-structure-of-response-from-llms">Define the structure
+of response from LLMs</h3>
+<pre ><code class="python" data-line-numbers="3-4,8">import instructor
+
+class Response(BaseModel):
+    message: str
+
+r = client.responses.create(
+    input="Write a haiku about IST 597 (HCAI)",
+    response_model=Response,
+)</code></pre>
+<p><code>response_model</code>: expected structure</p>
+</section>
+<section class="slide level0">
+
+<h3 id="different-data-types">Different data types</h3>
+<pre ><code class="python">class User(BaseModel):
+    name: str
+    age: int</code></pre>
+<div class="t-ref">
+<p><a
+href="https://python.useinstructor.com/learning/getting_started/response_models/">Understanding
+Response Models</a></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2 id="information-extraction-using-llm">Information extraction using
+LLM</h2>
+</section>
+<section class="slide level0">
+
+<h3 id="integrating-text-data-in-the-prompt">Integrating text data in
+the prompt</h3>
+<ul>
+<li><p>Extract data from external source and integrate in the
+prompt</p></li>
+<li><p>I converted <a
+href="https://budgetandfinance.psu.edu/budget-allocations">the web
+page</a> into <a
+href="https://github.com/hcai-ist/activity-spring-2026/tree/main/data/data-activity-03">markdown
+table</a></p></li>
+<li><p>We can integrate the markdown data into the prompt</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="what-if-our-data-is-in-pdf">What if our data is in pdf?</h3>
+<ul>
+<li><a
+href="https://budgetandfinance.psu.edu/public-reports#:~:text=Right%20To%20Know%20Law%20Report">Right
+To Know Law Reports</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="how-does-penn-state-spend-your-tuition">How does Penn State
+spend your tuition?</h2>
+<ul>
+<li><strong>Intercollegiate Athletics</strong> and <strong>College of
+Medicine</strong> are “<a
+href="https://www.psu.edu/news/administration/story/youve-asked-weve-answered-top-budget-faqs?utm_audience=Faculty&amp;utm_source=newswire&amp;utm_medium=email&amp;utm_campaign=Penn%20State%20Today&amp;utm_content=02-03-2026-21-01&amp;utm_term=TopStories%20-%202#:~:text=Self%2Dsustaining%20units%20%28%241%20billion%29%3A">self-sustaining
+units</a>”
+<ul>
+<li><span class="t-salmon"><strong>No</strong></span> tuition or state
+funding</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h3 id="options-for-handling-pdf-data">3 options for handling pdf
+data</h3>
+<ul>
+<li><p>Do it by yourself</p>
+<ul>
+<li>Extract the text data from the pdf using a third-party package</li>
+<li><code>pymupdf</code> converts pdf to markdown</li>
+</ul></li>
+<li><p>Use the vision API to convert image to text</p></li>
+<li><p>Use the <a
+href="https://platform.openai.com/docs/guides/tools-file-search">file
+search</a> API</p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="today">Today</h2>
+<h3 id="file-search-api">File search API</h3>
+<ul>
+<li><p>Do it by yourself</p>
+<ul>
+<li>Extract the text data from the pdf using a third-party package</li>
+<li><code>pymupdf</code> converts pdf to markdown</li>
+</ul></li>
+<li><p>Use the vision API to convert image to text</p></li>
+<li><p><strong>Use the <a
+href="https://platform.openai.com/docs/guides/tools-file-search">file
+search</a> API</strong></p></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="class-activity">Class activity</h2>
+<ul>
+<li><a
+href="https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-04.ipynb">Activity
+04</a></li>
+</ul>
+</section>
+<section class="slide level0">
+
+<h2 id="assignment-1">Assignment 1</h2>
+<ul>
+<li><a
+href="https://hcai-ist.github.io/spring-2026/assignments/assignment-01/">Description</a></li>
+<li>Due by Feb 23rd</li>
+</ul>
+</section>
+<section class="slide level0">
+
+</section>
+    </div>
+  </div>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/search/search.js"></script>
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script src="../../common/pandoc-reveal.js/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: true,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
