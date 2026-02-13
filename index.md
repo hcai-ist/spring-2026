@@ -18,6 +18,11 @@ include-after: |
 
 ## Weekly Schedule
 
+### Week 5 — 2026-02-13
+* [Slides](./slides/hcai-slides-2026-02-13/hcai-slides-2026-02-13.html)
+* [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-04.ipynb)
+* [Assignment 01](https://hcai-ist.github.io/spring-2026/assignments/assignment-01/)
+
 ### Week 4 — 2026-02-06
 * [Slides](./slides/hcai-slides-2026-02-06/hcai-slides-2026-02-06.html)
 * [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-03.ipynb)
