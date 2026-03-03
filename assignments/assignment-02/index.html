@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yunkai Xu" />
+  <meta name="dcterms.date" content="2026" />
+  <title>Assignment 02 — Daily Check Chatbot</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../common/tufte.css" />
+</head>
+<body>
+<article>
+<header id="title-block-header">
+<h1 class="title">Assignment 02 — Daily Check Chatbot</h1>
+<p class="subtitle">IST 597 (HCAI) — Spring 2026</p>
+</header>
+<section>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Assignment 02</h2>
+<ul>
+<li><a href="#description" id="toc-description">Description</a></li>
+<li><a href="#requirements" id="toc-requirements">Requirements</a></li>
+<li><a href="#implementation-resources"
+id="toc-implementation-resources">Implementation Resources</a>
+<ul>
+<li><a href="#step-1-collecting-the-daily-level"
+id="toc-step-1-collecting-the-daily-level">Step 1: Collecting the Daily
+Level</a></li>
+<li><a href="#step-2-feedback-after-logging"
+id="toc-step-2-feedback-after-logging">Step 2: Feedback After
+Logging</a>
+<ul>
+<li><a href="#level-1-to-3-low" id="toc-level-1-to-3-low">Level 1 to 3
+(Low)</a></li>
+<li><a href="#level-4-to-6-moderate"
+id="toc-level-4-to-6-moderate">Level 4 to 6 (Moderate)</a></li>
+<li><a href="#level-7-to-8-high" id="toc-level-7-to-8-high">Level 7 to 8
+(High)</a></li>
+<li><a href="#level-9-to-10-very-high"
+id="toc-level-9-to-10-very-high">Level 9 to 10 (Very High)</a></li>
+</ul></li>
+<li><a href="#step-3-asking-for-an-optional-note"
+id="toc-step-3-asking-for-an-optional-note">Step 3: Asking for an
+Optional Note</a></li>
+<li><a href="#step-4-responding-to-the-note"
+id="toc-step-4-responding-to-the-note">Step 4: Responding to The
+Note</a></li>
+</ul></li>
+<li><a href="#requirements-1"
+id="toc-requirements-1">Requirements</a></li>
+<li><a href="#grading" id="toc-grading">Grading</a></li>
+<li><a href="#notes" id="toc-notes">Notes</a></li>
+</ul>
+</nav>
+</section>
+<section id="description" class="level2">
+<h2>Description</h2>
+<p>In this assignment you will design and implement a daily check in
+chatbot using <strong>Streamlit and Python</strong>. The goal is to help
+users reflect on their daily emotional state and receive supportive
+responses generated through a large language model.</p>
+<p>This assignment focuses on conversational logic design conditional
+reasoning and basic integration with the OpenAI API. You are not
+expected to optimize models.</p>
+<p>
+<video width="100%" height="auto" controls preload="metadata">
+    <source src="streamlit-assignment-2-example.mp4" type="video/mp4">
+Your browser doesn't support HTML video. Here is the <a href="streamlit-assignment-2-example.mp4" download="streamlit-assignment-2-example.mp4">download link</a>
+</video>
+</p>
+</section>
+<section id="requirements" class="level2">
+<h2>Requirements</h2>
+<p>You will design a daily check in chatbot with the following core
+functions.</p>
+<ol type="1">
+<li>Main conversation logic:
+<ol type="1">
+<li>The user will upload daily depression levels using a numerical scale
+from 1 to 10.
+<ol type="1">
+<li>Hint: The system should reject any input outside this range (e.g.,
+−5 or 15).</li>
+</ol></li>
+<li>Users will write a short note explaining the chosen level such as
+possible reasons or context after logging in their depression
+level.</li>
+<li>Generate supportive responses that incorporate the content of the
+user note.</li>
+<li>Then the user can chat with the chatbot freely about the note, and
+the chatbot will give empathic feedback.
+<ol type="1">
+<li>Hint: The chatbot should support multiple conversation turns</li>
+</ol></li>
+</ol></li>
+<li>Other useful function:
+<ol type="1">
+<li>Can export (or download the chat history in any file format:
+e.g. txt, json, etc.) and clear chat history (initialize the
+chatbot).</li>
+</ol></li>
+</ol>
+</section>
+<section id="implementation-resources" class="level2">
+<h2>Implementation Resources</h2>
+<p>You can use <a
+href="https://github.com/Xuyk021/ConversationAgentClass/blob/main/assignment-2-exercise.py">the
+code as a reference</a>. You may either build your solution using the
+provided code framework or implement the entire codebase yourself. If
+you use the provided code, your task is to complete the TODO sections by
+adding the necessary implementations. In either case, please ensure that
+your code includes sufficient comments in the TODO sections.</p>
+<p>Using Python code or LLM prompt engineering, please implement the
+following logic and take steps to minimize hallucinations.</p>
+<section id="step-1-collecting-the-daily-level" class="level3">
+<h3>Step 1: Collecting the Daily Level</h3>
+<p>The chatbot should ask the user to enter a numerical value from 1 to
+10 to represent their daily anxiety or depression level.</p>
+<p>Accepted input examples include</p>
+<ul>
+<li>6</li>
+<li>log 6</li>
+<li>level 7</li>
+<li>7/10</li>
+</ul>
+<p>If the input is not a valid number between 1 and 10, the chatbot
+should politely ask the user to try again.</p>
+</section>
+<section id="step-2-feedback-after-logging" class="level3">
+<h3>Step 2: Feedback After Logging</h3>
+<p>After a valid level is recorded, the chatbot should respond using the
+logic below, based on the numerical range.</p>
+<section id="level-1-to-3-low" class="level4">
+<h4>Level 1 to 3 (Low)</h4>
+<p>The chatbot should respond with the following type of message</p>
+<ul>
+<li>Acknowledge that the anxiety level is relatively low</li>
+<li>Encourage light maintenance behavior</li>
+</ul>
+<p><strong>Example response</strong>: You’re doing a good job checking
+in. Anxiety seems relatively low today. Try a tiny maintenance step:
+take three slow breaths and pick one small thing you want to keep
+going.</p>
+</section>
+<section id="level-4-to-6-moderate" class="level4">
+<h4>Level 4 to 6 (Moderate)</h4>
+<p>The chatbot should respond with the following type of message</p>
+<ul>
+<li>Acknowledge moderate anxiety</li>
+<li>Offer a simple grounding exercise</li>
+</ul>
+<p><strong>Example response</strong>: Thanks for logging. Moderate
+anxiety can feel distracting. Try a quick reset: name five things you
+see, four you feel, three you hear, two you smell, and one you
+taste.</p>
+</section>
+<section id="level-7-to-8-high" class="level4">
+<h4>Level 7 to 8 (High)</h4>
+<p>The chatbot should respond with the following type of message</p>
+<ul>
+<li>Acknowledge that the user is having a difficult day</li>
+<li>Encourage reducing cognitive load and taking small steps</li>
+</ul>
+<p><strong>Example response</strong>: That sounds tough. When anxiety is
+high, lowering the load can help. Try two minutes of slow breathing,
+then choose one tiny task you can finish in ten minutes.</p>
+</section>
+<section id="level-9-to-10-very-high" class="level4">
+<h4>Level 9 to 10 (Very High)</h4>
+<p>The chatbot should respond with the following type of message</p>
+<ul>
+<li>Acknowledge emotional intensity</li>
+<li>Encourage immediate calming actions</li>
+<li>Include a brief safety oriented message</li>
+</ul>
+<p><strong>Example response</strong>: I’m sorry you’re feeling this
+intensely. You deserve support right now. Focus on immediate calming
+such as slow breathing or moving to a quieter place. If you feel unsafe
+or at risk of harming yourself, please contact local emergency services
+or a crisis hotline in your area.</p>
+</section>
+</section>
+<section id="step-3-asking-for-an-optional-note" class="level3">
+<h3>Step 3: Asking for an Optional Note</h3>
+<p>After providing feedback on the level, the chatbot should ask the
+user to optionally enter a short note explaining the level.</p>
+<p>This note will later be used as input for the following response.</p>
+</section>
+<section id="step-4-responding-to-the-note" class="level3">
+<h3>Step 4: Responding to The Note</h3>
+<p>Then, the chatbot should generate an additional response also using a
+large language model.</p>
+</section>
+</section>
+<section id="requirements-1" class="level2">
+<h2>Requirements</h2>
+<p>In the chatbot code:</p>
+<ol type="1">
+<li>Design your own prompt</li>
+<li>Decide how the recorded level and note are incorporated</li>
+<li>Ensure the response is supportive</li>
+<li>Use Streamlit for the interface</li>
+<li>Use Python for all logic</li>
+<li>Store conversation state using <code>st.session_state</code></li>
+</ol>
+<p>In the report:</p>
+<ol start="7" type="1">
+<li>You need to describe the user flow within your chatbot</li>
+<li>You should demonstrate the chatbot’s performance, including which
+parts of the system work and which parts do not work</li>
+<li>You may also include any aspects that you find interesting or
+necessary to highlight</li>
+<li>Consider the risk of the response and ways to mitigate them if these
+systems are deployed widely in the real world</li>
+</ol>
+</section>
+<section id="grading" class="level2">
+<h2>Grading</h2>
+<p>Submit the following items</p>
+<ol type="1">
+<li>Your completed Python code file (8 points in total):
+<ol type="1">
+<li>Working Implementation of the chat bot (6 points)</li>
+<li>Minimizing hallucination and risky responses (1 point)</li>
+<li>You need add sufficient comments in the code (1 point)
+<ol type="1">
+<li>If you use the provided code framework, you only need to add
+comments, except in the TODO sections.</li>
+</ol></li>
+<li><em>NOT upload your openai api key.</em></li>
+</ol></li>
+<li>Your detailed report on (20 points in total):
+<ol type="1">
+<li>User flow and performance of the implemented system (1 point)</li>
+<li>potential risks and actionable ways to mitigate those risks (1
+point)</li>
+</ol></li>
+</ol>
+<p>Make sure your code and report is readable and well structured.</p>
+</section>
+<section id="notes" class="level2">
+<h2>Notes</h2>
+<p>This assignment is intentionally scoped to focus on interaction logic
+rather than advanced model optimization. Simple, clear and well reasoned
+designs are preferred over complex solutions.</p>
+<p>If you have questions please ask during discussion or office
+hours.</p>
+</section>
+</article>
+</body>
+</html>
