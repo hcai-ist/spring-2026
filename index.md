@@ -18,6 +18,18 @@ include-after: |
 
 ## Weekly Schedule
 
+
+### Week 8 — 2026-03-06
+* [Slides](./slides/hcai-slides-2026-03-06/hcai-slides-2026-03-06.html)
+* [Assignment 02](https://hcai-ist.github.io/spring-2026/assignments/assignment-02/)
+
+### Week 7 — 2026-02-27
+* [Activity: Building a conversational agent II](https://docs.google.com/presentation/d/1Qr8clTjtETkQj4azV6LpMAjnN0RI2nU6QMeS670yAYI/edit)
+
+### Week 6 — 2026-02-20
+* [Final project ideas](https://hcai-ist.github.io/spring-2026/syllabus/syllabus-ist-597-spring-2026.html#week-6-0220-final-project-brainstorm)
+* [Activity: Building a conversational agent I](https://docs.google.com/presentation/d/1zfsWFytlH5knfGV_eijPkU-eZEcq8ZhxpXxhV_FTB_E/edit?slide=id.p#slide=id.p)
+
 ### Week 5 — 2026-02-13
 * [Slides](./slides/hcai-slides-2026-02-13/hcai-slides-2026-02-13.html)
 * [Activity](https://github.com/hcai-ist/activity-spring-2026/blob/main/activity-04.ipynb)
