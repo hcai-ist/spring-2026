@@ -18,6 +18,10 @@ include-after: |
 
 ## Weekly Schedule
 
+### Week 10 — 2026-03-20
+* [Slides](./slides/hcai-slides-2026-03-20/hcai-slides-2026-03-20.html)
+
+### Week 9 — 2026-03-13 (No class — Spring break)
 
 ### Week 8 — 2026-03-06
 * [Slides](./slides/hcai-slides-2026-03-06/hcai-slides-2026-03-06.html)
