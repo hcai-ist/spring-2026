@@ -18,6 +18,9 @@ include-after: |
 
 ## Weekly Schedule
 
+### Week 12 — 2026-04-03
+* [Slides](./slides/hcai-slides-2026-04-03/hcai-slides-2026-04-03.html)
+
 ### Week 11 — 2026-03-27
 * [Slides](./slides/hcai-slides-2026-03-27/hcai-slides-2026-03-27.html)
 
