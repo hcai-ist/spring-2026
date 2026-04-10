@@ -18,6 +18,10 @@ include-after: |
 
 ## Weekly Schedule
 
+
+### Week 13 — 2026-04-10
+* [Slides](./slides/hcai-slides-2026-04-10/hcai-slides-2026-04-10.html)
+
 ### Week 12 — 2026-04-03
 * [Slides](./slides/hcai-slides-2026-04-03/hcai-slides-2026-04-03.html)
 
