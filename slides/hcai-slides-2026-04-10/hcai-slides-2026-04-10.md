@@ -26,7 +26,7 @@ highlightjs-theme: dracula
     + Extended office hours
   
 
-* Week 14 (04/31)
+* Week 14 (05/01)
     + Final Presentation
 
 
@@ -43,7 +43,7 @@ highlightjs-theme: dracula
 
 ---
 
-### Final Presentation (04/31)
+### Final Presentation (05/01)
 
 * 5 minute [**poster**]{.t-salmon} presentation
     - Digital copy is ok (i.e., you do not have to print it)
