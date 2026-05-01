@@ -18,6 +18,15 @@ include-after: |
 
 ## Weekly Schedule
 
+### Week 15 — 2026-05-01
+* [Slides](./slides/hcai-slides-2026-05-01/hcai-slides-2026-05-01.html)
+
+### Week 15 — 2026-04-24
+* Extended office hours focusing on final project implementation
+
+### Week 14 — 2026-04-17
++ Guest Lecture: [Sam Moradzadeh](https://www.sammoradzadeh.me/)
+    + HCAI tools for mental health professionals
 
 ### Week 13 — 2026-04-10
 * [Slides](./slides/hcai-slides-2026-04-10/hcai-slides-2026-04-10.html)
